@@ -3,8 +3,15 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
 
+//import for trips routes
+import tripRoutes from './routes/trips.js';
+
 //initialise this application
 const app = express();
+
+//express middleware to connect trips.js to application
+//this changes the trip route from 'http://localhost:5000/' to 'http://localhost:5000/trips'
+app.use('/trips', tripRoutes);
 
 //setting up body parser to send successful requests
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
