@@ -18,6 +18,6 @@ const tripSchema = mongoose.Schema({
 });
 
 //turn schema into a model
-const TripMessage = mongoose.model('TripMessage', tripSchema)
+const TripOverView = mongoose.model('TripOverView', tripSchema)
 
-export default TripMessage;
+export default TripOverView;
