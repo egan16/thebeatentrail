@@ -15,6 +15,7 @@ app.use(cors());
 //MongoDB Atlas connection
 const CONNECTION_URL = 'mongodb+srv://mikeTBT:secret123@cluster0.9hada.mongodb.net/<dbname>?retryWrites=true&w=majority';
 // PORT for running application
+const PORT = process.env.PORT || 5000;
 
 //To connect DB to application
 mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
