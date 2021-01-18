@@ -26,8 +26,6 @@
   "eslintConfig": {
     "extends": [
       "react-app"
-      //removing "react-app/jest" this fixed error - failing to compile
-      // "react-app/jest"
     ]
   },
   "browserslist": {
