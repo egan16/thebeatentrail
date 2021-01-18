@@ -1,11 +1,11 @@
 import express from 'express';
 
+//imports functions from /controllers/trips.js
+import { getTrips } from '../controllers/trips.js'
+
 const router = express.Router();
 
-//arrow function will run when http://localhost:5000/ is run
 //app.use('/trips', tripRoutes); in index.js changes this to http://localhost:5000/trips
-router.get('/', (req, res) => {
-    res.send('THIS WORKS');
-});
+router.get('/', getTrips);
 
 export default router;
