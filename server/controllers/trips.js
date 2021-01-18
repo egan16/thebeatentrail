@@ -18,6 +18,18 @@ export const getTrips = async (req, res) => {
     }
 }
 
-export const createTrip = (req, res) => {
-    res.send('??');
+export const createTrip = async (req, res) => {
+    //post requests have access to request.body
+    const trip = req.body;
+    //create new post
+    const newTrip = new TripOverView(trip);
+    try {
+        await newTrip.save();
+        //when save is successful:
+        //respond with 201 creation success status and send new trip in as json
+        res.status(201).json(newTrip);
+    } catch (error) {
+        //if unsuccessful when creating new trip
+        res.status(409).json({ message: error.message });
+    }
 }
