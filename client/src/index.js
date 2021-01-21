@@ -5,6 +5,10 @@ import App from './App';
 
 //connecting to the div with the id root
 ReactDOM.render(
-    <App />,
+    // highlights potential problems in an application by performing checks
+    <React.StrictMode>
+        {/* create an instance of App class */}
+        <App />
+    </React.StrictMode>,
     document.getElementById('root')
     );
