@@ -2,6 +2,8 @@ import React from 'react';
 import { Component } from 'react';
 import { Container } from 'react-bootstrap';
 
+import Navigation from "./components/Navigation";
+
 import './css/App.css';
 
 class App extends Component {
@@ -18,8 +20,8 @@ class App extends Component {
   render() {
     return (
       <Container>
+          <Navigation/>
           Test
-        {/* <Navigation/> */}
       </Container>
     );
   }
