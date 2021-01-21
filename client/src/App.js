@@ -3,6 +3,9 @@ import { Component } from 'react';
 import { Container } from 'react-bootstrap';
 
 import Navigation from "./components/Navigation";
+import TripForm from './components/Form/TripForm/TripForm';
+import Trip from './components/Trips/Trip/Trip';
+import Trips from './components/Trips/Trips';
 
 import './css/App.css';
 
@@ -21,7 +24,9 @@ class App extends Component {
     return (
       <Container>
           <Navigation/>
-          Test
+          <TripForm/>
+          <Trips/>
+          <Trip/>
       </Container>
     );
   }
