@@ -1,6 +1,10 @@
 import React from 'react';
 import { Component } from 'react';
-import { Container } from 'react-bootstrap';
+import { 
+  Container,
+  Row,
+  Col
+} from 'react-bootstrap';
 
 import Navigation from "./components/Navigation";
 import TripForm from './components/Form/TripForm/TripForm';
@@ -22,9 +26,13 @@ class App extends Component {
   render() {
     return (
       <Container>
+        <Row>
           <Navigation/>
-          <TripForm/>
-          <Trips/>
+        </Row>
+        <Row>
+          <Col sm={8}><Trips/></Col>
+          <Col sm={4}><TripForm/></Col>
+        </Row>
       </Container>
     );
   }

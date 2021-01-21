@@ -15,7 +15,6 @@ class Trips extends Component {
       <div>
           <h1>Trips</h1>
           <Trip/>
-          <Trip/>
       </div>
     );
   }
