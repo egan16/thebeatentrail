@@ -1,4 +1,3 @@
-
 //Reducer function accepts state and action
 export default (trips = [], action) => {
     //returns state in switch statements depending on the action

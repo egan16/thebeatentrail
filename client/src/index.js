@@ -19,6 +19,7 @@ const store = createStore(reducers, compose(applyMiddleware(thunk)))
 ReactDOM.render(
     // highlights potential problems in an application by performing checks
     <React.StrictMode>
+        {/* store refers to the variable store above */}
         <Provider store={store}>
             {/* create an instance of App class */}
             <App />
