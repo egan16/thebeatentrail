@@ -1,3 +1,4 @@
+import React from 'react';
 import { Component } from 'react';
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";

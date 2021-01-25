@@ -7,7 +7,7 @@ export const getTrips = () => async (dispatch) => {
         //getting the response (or data object) from api
         const { data } = await api.fetchTrips();
 
-        dispatch({ type: 'FETCH_ALL', payload: [] }); //{ type: 'FETCH_ALL', payload: [] } is an action object
+        dispatch({ type: 'FETCH_ALL', payload: data }); //{ type: 'FETCH_ALL', payload: data } is an action object
         //everything above has used redux to dispatch an action from the data in backend
     } catch (error) {
         console.log(error.message);
