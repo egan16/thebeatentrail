@@ -1,6 +1,6 @@
 
 //Reducer function accepts state and action
-const reducer = (trips = [], action) => {
+export default (trips = [], action) => {
     //returns state in switch statements depending on the action
     switch (action.type) {
         case 'FETCH_ALL':
