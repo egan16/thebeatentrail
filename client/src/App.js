@@ -26,9 +26,7 @@ class App extends Component {
   render() {
     return (
       <Container>
-        <Row>
           <Navigation/>
-        </Row>
         <Row>
           <Col sm={8}><Trips/></Col>
           <Col sm={4}><TripForm/></Col>
