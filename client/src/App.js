@@ -12,18 +12,7 @@ import Trips from './components/Trips/Trips';
 
 import './css/App.css';
 
-class App extends Component {
-  // For storing state
-  constructor(props) {
-    // call super constructor in parent class (Component class)
-    super(props);
-    // bind property called this.state - ("this." refers to object created from the class template)
-    this.state = {
-        
-    };
-  }
-
-  render() {
+const App = () => {
     return (
       <Container>
           <Navigation/>
@@ -33,7 +22,6 @@ class App extends Component {
         </Row>
       </Container>
     );
-  }
 }
 
 export default App;
