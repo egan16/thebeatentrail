@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { Form, Button, Card } from 'react-bootstrap';
 import FileBase from 'react-file-base64';
+import { useDispatch } from 'react-redux';
+
+import { createTrip } from '../../../actions/trips';
 
 const TripForm = () =>  {
   //useState hook
@@ -10,9 +13,14 @@ const TripForm = () =>  {
     tags: '',
     selectedFile: ''
   });
-  // handleSubmit function handler
-  const handleSubmit = () => {
 
+  const dispatch = useDispatch();
+
+  // handleSubmit function handler
+  const handleSubmit = (e) => {
+    e.preventDefault(); //so browser does not refresh
+
+    dispatch(createTrip(tripData)); // dispatch createTrip action & pass in all the trip state
   }
 
   const clear = () => {
