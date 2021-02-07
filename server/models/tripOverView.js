@@ -2,9 +2,9 @@ import mongoose from 'mongoose';
 
 //create mongoose schema for trips
 const tripSchema = mongoose.Schema({
-    name: String,
+    title: String,
     description: String,
-    creator: String,
+    user: String,
     tags: [String],
     selectedFile: String,
     likeCount: {

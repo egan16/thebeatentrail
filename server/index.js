@@ -14,6 +14,7 @@ app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 //setting up cors
 app.use(cors());
+
 //express middleware to connect trips.js to application
 //this changes the trip route from 'http://localhost:5000/' to 'http://localhost:5000/trips'
 app.use('/trips', tripRoutes);
