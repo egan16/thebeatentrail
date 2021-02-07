@@ -1,5 +1,5 @@
 //Reducer function accepts state and action
-export default (trips = [], action) => {
+export default (trips = [ ], action) => {
     //returns state in switch statements depending on the action
     switch (action.type) {
         case 'FETCH_ALL':
@@ -7,6 +7,6 @@ export default (trips = [], action) => {
         case 'CREATE':
             return trips;
         default:
-            trips;
+            return trips;
     }
 }
