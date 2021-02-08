@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Button, Card } from 'react-bootstrap';
-import FileBase from 'react-file-base64';
+// import FileBase from 'react-file-base64';
 import { useDispatch } from 'react-redux';
 
 import { createTrip } from '../../../actions/trips';
@@ -75,14 +75,14 @@ const TripForm = () =>  {
               onChange={(e) => setTripData({ ... tripData, tags: e.target.value })}
             />
           </Form.Group>
-          <Form.Group controlId="selectedFile">
+          {/* <Form.Group controlId="selectedFile">
             <FileBase
               type="file"
               multiple={false}
               //callback function to convert image to string and sets it to state value for selectedFile
               onDone={(base64) => setTripData({ ... tripData, selectedFile: base64 })}
             />
-          </Form.Group>
+          </Form.Group> */}
           <Button variant="primary" type="submit">
             Submit
           </Button>
