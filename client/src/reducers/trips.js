@@ -2,6 +2,9 @@
 export default (trips = [ ], action) => {
     //returns state in switch statements depending on the action
     switch (action.type) {
+        case 'DELETE':
+            return trips.filter((trip) => trip._id != action.payload) //return all the trips except to the trip where id is equal to action.payload
+        //edit goes here
         case 'FETCH_ALL':
             return action.payload; //action.payload is the trips retrieved from actions
         case 'CREATE':
