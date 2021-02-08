@@ -10,7 +10,7 @@ const Trip = ({ trip }) =>  {
   const dispatch = useDispatch(); //initialise dispatch variable to = useDispatch hook
 
   return (
-    <Card style={{ width: '18rem' }}>
+    <Card style={{ width: '18rem' }} className="mb-4" >
       <Card.Img variant="top" src={trip.selectedFile} ></Card.Img>
       <Card.Body>
         <Card.Title>{trip.title}</Card.Title>
