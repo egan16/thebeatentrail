@@ -1,9 +1,14 @@
 import React from 'react';
 import { Card, Button } from 'react-bootstrap';
 import moment from 'moment';
+import { useDispatch } from "react-redux";
+
+import { deleteTrip } from '../../../actions/trips';
 
 //pass in trip as props
 const Trip = ({ trip }) =>  {
+  const dispatch = useDispatch(); //initialise dispatch variable to = useDispatch hook
+
   return (
     <Card style={{ width: '18rem' }}>
       <Card.Img variant="top" src={trip.selectedFile} ></Card.Img>
@@ -15,7 +20,7 @@ const Trip = ({ trip }) =>  {
         <Card.Subtitle className="mb-2 text-muted">{moment(trip.createdAt).fromNow()}</Card.Subtitle>
         <Button variant="primary" onClick={() => {} }>Edit?</Button>
         <Button variant="primary" onClick={() => {} }>Like {trip.likeCount}</Button>
-        <Button variant="primary" onClick={() => {} }>Delete</Button>
+        <Button variant="primary" onClick={() => dispatch(deleteTrip(trip._id)) }>Delete</Button>
       </Card.Body>
     </Card>
   );
