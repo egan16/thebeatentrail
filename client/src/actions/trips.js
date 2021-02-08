@@ -23,3 +23,15 @@ export const createTrip = (post) => async (dispatch) => {
         console.log(error);
     }
 }
+
+//edit goes here
+
+export const deleteTrip = (id) => async (dispatch) => {
+    try {
+        await api.deleteTrip(id);
+
+        dispatch({ type: 'DELETE', payload: id })
+    } catch (error) {
+        console.log(error);
+    }
+}
