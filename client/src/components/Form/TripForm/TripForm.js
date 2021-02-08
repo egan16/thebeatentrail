@@ -72,7 +72,7 @@ const TripForm = () =>  {
               type="tags"
               placeholder="Enter tags of trip"
               value={tripData.tags}
-              onChange={(e) => setTripData({ ... tripData, tags: e.target.value })}
+              onChange={(e) => setTripData({ ... tripData, tags: e.target.value.split(',') })}
             />
           </Form.Group>
           <Form.Group controlId="selectedFile">
