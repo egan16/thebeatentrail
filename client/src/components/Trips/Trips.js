@@ -17,7 +17,7 @@ const Trips = () =>  {
       // if there are no trips show a spinner, if there are trips show trips
       !trips.length ? <Spinner animation="border" variant="dark" /> : (
         <Container>
-          <Row xs={1} md={2} lg={3} xl={4}>
+          <Row>
             {/* to loop over trips */}
             {trips.map((trip) => (
               <Col key={trip._id}>
@@ -27,12 +27,6 @@ const Trips = () =>  {
           </Row>
         </Container>
       )
-      
-      
-      // <div>
-      //     <h1>Trips</h1>
-      //     <Trip/>
-      // </div>
     );
 };
 

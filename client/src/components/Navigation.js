@@ -13,7 +13,7 @@ class Navigation extends Component {
 
   render() {
     return (
-        <Navbar bg="light" expand="lg">
+        <Navbar bg="light" expand="lg" className="mb-5">
         <Navbar.Brand href="#home">
             <img
                 src="logo.svg"

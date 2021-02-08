@@ -26,7 +26,7 @@ const App = () => {
 
     return (
       <Container>
-          <Navigation/>
+          <Navigation mb="5" />
         <Row>
           <Col sm={8}><Trips/></Col>
           <Col sm={4}><TripForm/></Col>
