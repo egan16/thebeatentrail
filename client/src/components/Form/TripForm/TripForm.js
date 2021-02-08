@@ -74,6 +74,9 @@ const TripForm = () =>  {
               value={tripData.tags}
               onChange={(e) => setTripData({ ... tripData, tags: e.target.value.split(',') })}
             />
+            <Form.Text className="text-muted">
+              Hint: Adventure,Beach (comma between hashtags with no spaces)
+            </Form.Text>
           </Form.Group>
           <Form.Group controlId="selectedFile">
             <FileBase
