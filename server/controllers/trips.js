@@ -33,3 +33,15 @@ export const createTrip = async (req, res) => {
         res.status(409).json({ message: error.message });
     }
 }
+
+// do edit function here
+
+export const deleteTrip = async (req, res) => {
+    const { id } = req.params;
+    
+    if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send('No trip with that id');
+
+    await TripMessage.findByIDAndRemove(id);
+
+    res.json({ message: 'Trip deleted successfully' });
+}
