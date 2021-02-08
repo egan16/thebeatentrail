@@ -1,5 +1,7 @@
 //this file is for the handlers for routes
 
+import mongoose from 'mongoose';
+
 //gives access to trip model
 import TripOverView from '../models/tripOverView.js';
 
@@ -39,9 +41,11 @@ export const createTrip = async (req, res) => {
 export const deleteTrip = async (req, res) => {
     const { id } = req.params;
     
-    if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send('No trip with that id');
+    if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No trip with that id');
 
-    await TripMessage.findByIDAndRemove(id);
+    await TripOverView.findByIdAndRemove(id);
+
+    console.log('Deleted trip');
 
     res.json({ message: 'Trip deleted successfully' });
 }
