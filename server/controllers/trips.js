@@ -37,8 +37,18 @@ export const createTrip = async (req, res) => {
     }
 }
 
-// do edit function here
+export const updateTrip = async (req, res) => {
+    const { id: _id } = req.params;
+    const trip = req.body;
 
+    if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send('No trip with that id');
+
+    //update trip by id, second param is the trip, third param sets the object new to true
+    const updatedTrip = await TripOverView.findByIdAndUpdate(id, trip, { new: true });
+
+    res.json(updatedTrip);
+
+}
 
 //deleteTrip controller
 export const deleteTrip = async (req, res) => {
