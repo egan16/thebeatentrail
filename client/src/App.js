@@ -23,7 +23,7 @@ const App = () => {
   useEffect(() => {
     //dispatch an action
     dispatch(getTrips());
-  }, [dispatch]);
+  }, [currentId, dispatch]);
 
     return (
       <Container>

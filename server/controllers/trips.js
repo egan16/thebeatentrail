@@ -44,7 +44,7 @@ export const updateTrip = async (req, res) => {
     if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send('No trip with that id');
 
     //update trip by id, second param is the trip, third param sets the object new to true
-    const updatedTrip = await TripOverView.findByIdAndUpdate(id, trip, { new: true });
+    const updatedTrip = await TripOverView.findByIdAndUpdate(_id, { ...trip, _id }, { new: true });
 
     res.json(updatedTrip);
 

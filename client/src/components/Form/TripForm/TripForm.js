@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Button, Card } from 'react-bootstrap';
 import FileBase from 'react-file-base64';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux'; //useSelector - To retrieve the data in components from global redux store
 
 import { createTrip, updateTrip } from '../../../actions/trips';
 
 // pass in currentId, setCurrentId as props from state in parent App.js
-const TripForm = ({ currentId, setCurrentId  }) =>  {
+const TripForm = ({ currentId, setCurrentId }) =>  {
   //useState hook
   const [tripData, setTripData] = useState({
     title: '',
@@ -14,8 +14,16 @@ const TripForm = ({ currentId, setCurrentId  }) =>  {
     tags: '',
     selectedFile: ''
   });
-
+  // get the trip with the current id, if no current id have null
+  const trip = useSelector((state) => currentId ? state.trips.find((t) => t._id == currentId) : null);
   const dispatch = useDispatch();
+
+  //useEffect to populate values of form if there is a current id
+  //useEffect has 2 param: callback function and dependecy array
+  //when trip value changes from null to a trip run the callback function
+  useEffect(() => {
+    if(trip) setTripData(trip);
+  }, [trip])
 
   // handleSubmit function handler
   const handleSubmit = (e) => {
@@ -29,16 +37,25 @@ const TripForm = ({ currentId, setCurrentId  }) =>  {
       //if there is no trip id...
       dispatch(createTrip(tripData)); // dispatch createTrip action & pass in all the trip state
     }
+    clear();
   }
 
   const clear = () => {
-
+    //reset trip id to null
+    setCurrentId(null);
+    //reset trip data to empty strings
+    setTripData({
+      title: '',
+      description: '',
+      tags: '',
+      selectedFile: ''
+    });
   }
 
   return (
     <Card className="mt-2">
       <Card.Body>
-        <Card.Title>Create new trip</Card.Title>
+        <Card.Title>{currentId ? 'Edit' : 'Create'} a trip</Card.Title>
         {/* start of Form */}
         {/* onSubmit handler attached to form to execute handleSubmit function when button clicked  */}
         <Form onSubmit={handleSubmit}>

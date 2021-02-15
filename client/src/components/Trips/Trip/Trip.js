@@ -3,7 +3,7 @@ import { Card, Button } from 'react-bootstrap';
 import moment from 'moment';
 import { useDispatch } from "react-redux";
 
-import { deleteTrip } from '../../../actions/trips';
+import { deleteTrip, likeTrip } from '../../../actions/trips';
 
 //pass in trip and setCurrentId as props
 const Trip = ({ trip, setCurrentId }) =>  {
@@ -19,8 +19,8 @@ const Trip = ({ trip, setCurrentId }) =>  {
         {/* using the moment library - fromNow() uses the date and says how long since the date, eg, 1 week ago */}
         <Card.Subtitle className="mb-2 text-muted">{moment(trip.createdAt).fromNow()}</Card.Subtitle>
         {/* //Edit button now stores trip id state */}
-        <Button variant="primary" onClick={() => setCurrentId(trip._id) }>Edit</Button>
-        {/* <Button variant="primary" onClick={() => dispatch(likeTrip(trip._id)) }>Like {trip.likeCount}</Button> */}
+        <Button variant="primary" onClick={() => setCurrentId(trip._id)}>Edit</Button>
+        <Button variant="primary" onClick={() => dispatch(likeTrip(trip._id)) }>Like {trip.likeCount}</Button>
         <Button variant="primary" onClick={() => dispatch(deleteTrip(trip._id)) }>Delete</Button>
       </Card.Body>
     </Card>
