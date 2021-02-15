@@ -24,17 +24,16 @@ export const createTrip = (post) => async (dispatch) => {
     }
 }
 
-//edit goes here
-// export const updateTrip = (id, trip) => async (dispatch) => {
-//     try {
-//         //get data for newly updated trip
-//         const { data } = await api.updateTrip(id, trip);
+export const updateTrip = (id, trip) => async (dispatch) => {
+    try {
+        //get data for newly updated trip
+        const { data } = await api.updateTrip(id, trip);
 
-//         dispatch({ type: 'UPDATE', payload: data });
-//     } catch (error) {
-//         console.log(error);
-//     }
-// }
+        dispatch({ type: 'UPDATE', payload: data });
+    } catch (error) {
+        console.log(error);
+    }
+}
 
 export const deleteTrip = (id) => async (dispatch) => {
     try {
