@@ -22,7 +22,10 @@ const Trips = ({ setCurrentId }) =>  {
             {/* to loop over trips */}
             {trips.map((trip) => (
               <Col key={trip._id}>
-                <Trip trip={trip} />
+                <Trip
+                  trip={trip}
+                  setCurrentId={setCurrentId} //send props to Trip component
+                />
               </Col>
             ))} 
           </Row>
