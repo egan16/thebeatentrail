@@ -1,49 +1,25 @@
-import React , { useState, useEffect } from 'react'; //useEffect is used for componentDidMount/componentWillUpdate methods
-import { 
-  Container,
-  Row,
-  Col
-} from 'react-bootstrap';
-import { useDispatch } from 'react-redux'; //hook to dispatch an action
+import React from 'react'; //useEffect is used for componentDidMount/componentWillUpdate methods
+import { Container } from 'react-bootstrap';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import { getTrips } from './actions/trips';
 import Navigation from "./components/Navigation/Navigation";
-import TripForm from './components/Form/TripForm/TripForm';
-import Trips from './components/Trips/Trips';
+import Home from './components/Home/Home';
 
 import './css/App.css';
 
 const App = () => {
-  const [currentId, setCurrentId] = useState(null); //initialise variable to = useState hook
-  //Define the dispatch to be equal to useDispatch() hook
-  const dispatch = useDispatch();
-
-  //used for componentDidMount/componentWillUpdate methods
-  //inside method: callback function and empty array
-  useEffect(() => {
-    //dispatch an action
-    dispatch(getTrips());
-  }, [currentId, dispatch]);
 
     return (
-      <Container>
+      <BrowserRouter>
+        <Container>
           <Navigation mb="5" />
-        <Row>
-          <Col sm={8}>
-            <Trips
-              //pass in state to be used as props
-              setCurrentId = {setCurrentId}
-            />
-          </Col>
-          <Col sm={4}>
-            <TripForm 
-              //pass in state to be used as props
-              currentId={currentId}
-              setCurrentId = {setCurrentId}
-            />
-          </Col>
-        </Row>
-      </Container>
+          <Switch>
+            <Route path="/" exact>
+              <Home />
+            </Route>
+          </Switch>
+        </Container>
+      </BrowserRouter>
     );
 }
 
