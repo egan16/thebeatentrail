@@ -5,7 +5,8 @@ import { useDispatch } from 'react-redux';
 
 import { createTrip } from '../../../actions/trips';
 
-const TripForm = () =>  {
+// pass in currentId, setCurrentId as props from state in parent App.js
+const TripForm = ({ currentId, setCurrentId  }) =>  {
   //useState hook
   const [tripData, setTripData] = useState({
     title: '',

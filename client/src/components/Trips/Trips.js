@@ -4,7 +4,7 @@ import { Col, Container, Row, Spinner } from "react-bootstrap";
 
 import Trip from './Trip/Trip';
 
-const Trips = () =>  {
+const Trips = ({ setCurrentId }) =>  {
   //initialise useSelector as hook
   //inside of useSelector() there is a callback function
   //state is a parameter of the callbacback function to get access to state (global redux store)
