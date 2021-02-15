@@ -1,19 +1,10 @@
 import React from 'react';
-import { Component } from 'react';
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 
-class Navigation extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-        
-    };
-  }
-
-  render() {
-    return (
-        <Navbar bg="light" expand="lg" className="mb-5">
+const Navigation = () => {
+  return (
+    <Navbar bg="light" expand="lg" className="mb-5">
         <Navbar.Brand href="#home">
             <img
                 src="logo.svg"
@@ -39,8 +30,7 @@ class Navigation extends Component {
           </Nav.Item>
         </Navbar.Collapse>
       </Navbar>
-    );
-  }
+  )
 }
 
 export default Navigation;
