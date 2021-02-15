@@ -4,6 +4,7 @@ import { Col, Container, Row, Spinner } from "react-bootstrap";
 
 import Trip from './Trip/Trip';
 
+// pass in setCurrentId as props from state in parent App.js
 const Trips = ({ setCurrentId }) =>  {
   //initialise useSelector as hook
   //inside of useSelector() there is a callback function
