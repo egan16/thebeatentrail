@@ -18,7 +18,7 @@ const Trip = ({ trip }) =>  {
         <Card.Text>{trip.description}</Card.Text>
         {/* using the moment library - fromNow() uses the date and says how long since the date, eg, 1 week ago */}
         <Card.Subtitle className="mb-2 text-muted">{moment(trip.createdAt).fromNow()}</Card.Subtitle>
-        {/* <Button variant="primary" onClick={() => {} }>Edit?</Button> */}
+        {/* <Button variant="primary" onClick={() => {} }>Edit</Button> */}
         {/* <Button variant="primary" onClick={() => dispatch(likeTrip(trip._id)) }>Like {trip.likeCount}</Button> */}
         <Button variant="primary" onClick={() => dispatch(deleteTrip(trip._id)) }>Delete</Button>
       </Card.Body>

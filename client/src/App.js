@@ -1,4 +1,4 @@
-import React , { useEffect } from 'react'; //useEffect is used for componentDidMount/componentWillUpdate methods
+import React , { useState, useEffect } from 'react'; //useEffect is used for componentDidMount/componentWillUpdate methods
 import { 
   Container,
   Row,
@@ -14,6 +14,7 @@ import Trips from './components/Trips/Trips';
 import './css/App.css';
 
 const App = () => {
+  const [currentId, setCurrentId] = useState(null); //initialise variable to = useState hook
   //Define the dispatch to be equal to useDispatch() hook
   const dispatch = useDispatch();
 
@@ -28,8 +29,19 @@ const App = () => {
       <Container>
           <Navigation mb="5" />
         <Row>
-          <Col sm={8}><Trips/></Col>
-          <Col sm={4}><TripForm/></Col>
+          <Col sm={8}>
+            <Trips
+              //pass in state to be used as props
+              setCurrentId = {setCurrentId}
+            />
+          </Col>
+          <Col sm={4}>
+            <TripForm 
+              //pass in state to be used as props
+              currentId={currentId}
+              setCurrentId = {setCurrentId}
+            />
+          </Col>
         </Row>
       </Container>
     );
