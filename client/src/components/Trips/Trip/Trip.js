@@ -5,8 +5,8 @@ import { useDispatch } from "react-redux";
 
 import { deleteTrip } from '../../../actions/trips';
 
-//pass in trip as props
-const Trip = ({ trip }) =>  {
+//pass in trip and setCurrentId as props
+const Trip = ({ trip, setCurrentId }) =>  {
   const dispatch = useDispatch(); //initialise dispatch variable to = useDispatch hook
 
   return (
