@@ -3,7 +3,7 @@ import { Form, Button, Card } from 'react-bootstrap';
 import FileBase from 'react-file-base64';
 import { useDispatch } from 'react-redux';
 
-import { createTrip } from '../../../actions/trips';
+import { createTrip, updateTrip } from '../../../actions/trips';
 
 // pass in currentId, setCurrentId as props from state in parent App.js
 const TripForm = ({ currentId, setCurrentId  }) =>  {
@@ -21,7 +21,14 @@ const TripForm = ({ currentId, setCurrentId  }) =>  {
   const handleSubmit = (e) => {
     e.preventDefault(); //so browser does not refresh
 
-    dispatch(createTrip(tripData)); // dispatch createTrip action & pass in all the trip state
+    //if statement to check if there is trip id in state.
+    if(currentId) {
+      //make form update current trip
+      dispatch(updateTrip(currentId, tripData));
+    } else {
+      //if there is no trip id...
+      dispatch(createTrip(tripData)); // dispatch createTrip action & pass in all the trip state
+    }
   }
 
   const clear = () => {
