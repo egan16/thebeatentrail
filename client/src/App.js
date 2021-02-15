@@ -7,7 +7,7 @@ import {
 import { useDispatch } from 'react-redux'; //hook to dispatch an action
 
 import { getTrips } from './actions/trips';
-import Navigation from "./components/Navigation";
+import Navigation from "./components/Navigation/Navigation";
 import TripForm from './components/Form/TripForm/TripForm';
 import Trips from './components/Trips/Trips';
 
