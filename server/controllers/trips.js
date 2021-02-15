@@ -20,6 +20,7 @@ export const getTrips = async (req, res) => {
     }
 }
 
+//createTrip controller
 export const createTrip = async (req, res) => {
     //post requests have access to request.body
     const trip = req.body;
@@ -38,6 +39,8 @@ export const createTrip = async (req, res) => {
 
 // do edit function here
 
+
+//deleteTrip controller
 export const deleteTrip = async (req, res) => {
     const { id } = req.params;
     
@@ -48,4 +51,19 @@ export const deleteTrip = async (req, res) => {
     console.log('Deleted trip');
 
     res.json({ message: 'Trip deleted successfully' });
+}
+
+//likeTrip controller
+export const likeTrip = async (req, res) => {
+    const { id } = req.params;
+
+    if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No trip with that id');
+
+    //return trip by id
+    const trip = await TripOverView.findById(id);
+    //update trip by id, second param is where the updates are passed in (likeCount object increment by 1), third param sets the object new to true
+    const updatedTrip = await TripOverView.findByIdAndUpdate(id, { likeCount: trip.likeCount + 1 }, { new: true });
+
+    res.json(updatedTrip);
+
 }
