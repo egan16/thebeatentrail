@@ -19,9 +19,9 @@ const Trip = ({ trip, setCurrentId }) =>  {
         {/* using the moment library - fromNow() uses the date and says how long since the date, eg, 1 week ago */}
         <Card.Subtitle className="mb-2 text-muted">{moment(trip.createdAt).fromNow()}</Card.Subtitle>
         {/* //Edit button now stores trip id state */}
-        <Button variant="primary" onClick={() => setCurrentId(trip._id)}>Edit</Button>
-        <Button variant="primary" onClick={() => dispatch(likeTrip(trip._id)) }>Like {trip.likeCount}</Button>
-        <Button variant="primary" onClick={() => dispatch(deleteTrip(trip._id)) }>Delete</Button>
+        <Button variant="primary" className="mr-2" onClick={() => setCurrentId(trip._id)}>Edit</Button>
+        <Button variant="primary" className="mr-2" onClick={() => dispatch(likeTrip(trip._id)) }>Like {trip.likeCount}</Button>
+        <Button variant="primary" className="mr-2" onClick={() => dispatch(deleteTrip(trip._id)) }>Delete</Button>
       </Card.Body>
     </Card>
   );
