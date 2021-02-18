@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Card, Form, Button, Row, Col } from 'react-bootstrap';
+import { GoogleLogin } from 'react-google-login';
 
 const Auth = () => {
     const [isSignup, setIsSignup] = useState(false);
@@ -16,6 +17,15 @@ const Auth = () => {
         setIsSignup((prevIsSignup) => !prevIsSignup); //switches the isSignup state
     };
 
+    const googleSuccess = async (res) => {
+        console.log(res)
+    };
+
+    const googleFailure = (error) => {
+        console.log(error);
+        console.log("Google sign in Unsuccessful. Try again later")
+    };
+
     return (
         <Row>
             <Col xs={12} md={{ span: 6, offset: 3 }} lg={{ span: 6, offset: 3 }}>
@@ -26,7 +36,7 @@ const Auth = () => {
                         {/* onSubmit handler attached to form to execute handleSubmit function when button clicked  */}
                         <Form onSubmit={handleSubmit}>
                             {   
-                                // if isSignup show this aswell
+                                // if isSignup true show this aswell
                                 isSignup && (
                                     <>
                                         <Row>
@@ -42,7 +52,6 @@ const Auth = () => {
                                                         value=""
                                                         handleChange={handleChange}
                                                         autoFocus
-                                                        fullWidth
                                                     />
                                                 </Form.Group>
                                             </Col>
@@ -57,7 +66,6 @@ const Auth = () => {
                                                         placeholder="Enter last name"
                                                         value=""
                                                         handleChange={handleChange}
-                                                        fullWidth
                                                     />
                                                 </Form.Group>
                                             </Col>
@@ -75,7 +83,6 @@ const Auth = () => {
                                     placeholder="Enter email address"
                                     value=""
                                     handleChange={handleChange}
-                                    fullWidth
                                 />
                             </Form.Group>
                             {/* start of password */}
@@ -88,10 +95,10 @@ const Auth = () => {
                                     placeholder="Enter password"
                                     value=""
                                     handleChange={handleChange}
-                                    fullWidth
                                 />
                             </Form.Group>
                             {
+                                // if isSignup true show this aswell
                                 isSignup && 
                                     <Form.Group controlId="confirmPassword" xs={12} md={6}>
                                         <Form.Label>Confirm Password</Form.Label>
@@ -102,18 +109,48 @@ const Auth = () => {
                                             placeholder="Re-enter password"
                                             value=""
                                             handleChange={handleChange}
-                                            fullWidth
                                         />
                                     </Form.Group>
                             }
+                            <Button
+                                className="mb-2"
+                                block
+                                variant="primary"
+                                type="submit"
+                            >
+                                {isSignup ? 'Sign Up' : 'Sign In'}
+                            </Button>
                             <Row>
-                                <Col xs={12} md={4}>
-                                    <Button variant="primary" type="submit" fullWidth>
-                                        {isSignup ? 'Sign Up' : 'Sign In'}
-                                    </Button>
+                                <Col className="mb-2" xs={12} md={5}>
+                                    {/* Button to log in through google account */}
+                                    <GoogleLogin 
+                                        clientId="907219582512-i9mopv55ds8gu25e3bmml37bt886hfub.apps.googleusercontent.com"
+                                        //what button will look like
+                                        render={(renderProps) => (
+                                            <Button
+                                                className="mb-2"
+                                                block
+                                                onClick={renderProps.onClick}
+                                                disabled={renderProps.disabled}
+                                            >
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-google mr-2 pb-1" viewBox="0 0 16 16">
+                                                    <path d="M15.545 6.558a9.42 9.42 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.689 7.689 0 0 1 5.352 2.082l-2.284 2.284A4.347 4.347 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.792 4.792 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.702 3.702 0 0 0 1.599-2.431H8v-3.08h7.545z"/>
+                                                </svg>
+                                                Google Sign In
+                                            </Button>
+                                        )}
+                                        onSuccess={googleSuccess}
+                                        onFailure={googleFailure}
+                                        cookiePolicy="single_host_origin"
+                                    />
                                 </Col>
-                                <Col xs={12} md={8}>
-                                    <Button variant="light" onClick={switchMode}>
+                                <Col xs={12} md={7}>
+                                    {/* button to switch isSignup state */}
+                                    <Button
+                                        block 
+                                        variant="light" 
+                                        onClick={switchMode}
+                                    >
                                         {isSignup ? 'Already have an account? Sign In' : "Don't have an account? Sign Up"}
                                     </Button>
                                 </Col>
