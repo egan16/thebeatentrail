@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { Card, Form, Button, Row, Col } from 'react-bootstrap';
 import { GoogleLogin } from 'react-google-login';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 const Auth = () => {
     const [isSignup, setIsSignup] = useState(false);
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const handleSubmit = () => {
 
@@ -27,6 +29,8 @@ const Auth = () => {
         try {
             //if login successful dispatch action
             dispatch({ type: 'AUTH', data: { result, token } });
+            //once dispatched redirect to home
+            history.push('/');
         } catch (error) {
             console.log(error);
         }

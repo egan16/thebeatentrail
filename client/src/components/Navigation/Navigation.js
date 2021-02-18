@@ -1,10 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 
 const Navigation = () => {
-  const user = null;
+
+  //set user state from localstorage
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+
+  console.log(user);
+
+  //automatically re-navigate 
+  useEffect(() => {
+    //if token exists send to token variable
+    const token = user?.token;
+
+    //manual sign up token (JWS) here when done
+
+    setUser(JSON.parse(localStorage.getItem('profile')));
+  }, []);
+
   return (
       <Navbar bg="light" expand="lg" className="mb-5">
         <Navbar.Brand as={Link} to='/'>
