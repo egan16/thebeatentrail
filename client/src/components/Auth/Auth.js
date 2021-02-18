@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, Form, Button, Row, Col } from 'react-bootstrap';
 
 const Auth = () => {
-    const isSignup = true;
+    const [isSignup, setIsSignup] = useState(false);
 
     const handleSubmit = () => {
 
@@ -13,7 +13,7 @@ const Auth = () => {
     };
 
     const switchMode = () => {
-
+        setIsSignup((prevIsSignup) => !prevIsSignup); //switches the isSignup state
     };
 
     return (
