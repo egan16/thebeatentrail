@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Card, Form, Button, Row, Col } from 'react-bootstrap';
 import { GoogleLogin } from 'react-google-login';
+import { useDispatch } from 'react-redux';
 
 const Auth = () => {
     const [isSignup, setIsSignup] = useState(false);
+    const dispatch = useDispatch();
 
     const handleSubmit = () => {
 
@@ -18,7 +20,16 @@ const Auth = () => {
     };
 
     const googleSuccess = async (res) => {
-        console.log(res)
+        const result = res?.profileObj;
+        const token = res?.tokenId;
+
+        //needs try catch because async
+        try {
+            //if login successful dispatch action
+            dispatch({ type: 'AUTH', data: { result, token } });
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     const googleFailure = (error) => {
