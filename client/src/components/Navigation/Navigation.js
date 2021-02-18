@@ -23,11 +23,7 @@ const Navigation = () => {
           </Nav.Item>
           {user === null &&
           <Nav.Item className="ml-auto">
-            <Nav.Link as={Link} to='/auth'>Login</Nav.Link>
-          </Nav.Item>}
-          {user === null &&
-          <Nav.Item>
-            <Nav.Link>Register</Nav.Link>
+            <Nav.Link as={Link} to='/auth'>Sign In</Nav.Link>
           </Nav.Item>}
           {user !== null &&
             <Navbar.Brand href="#home">
