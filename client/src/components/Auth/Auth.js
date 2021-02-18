@@ -2,13 +2,17 @@ import React from 'react';
 import { Card, Form, Button, Row, Col } from 'react-bootstrap';
 
 const Auth = () => {
-    const isSignup = false;
+    const isSignup = true;
 
     const handleSubmit = () => {
 
     };
 
     const handleChange = () => {
+
+    };
+
+    const switchMode = () => {
 
     };
 
@@ -25,33 +29,39 @@ const Auth = () => {
                                 // if isSignup show this aswell
                                 isSignup && (
                                     <>
-                                        {/* start of firstName */}
-                                        <Form.Group controlId="firstName" xs={12} md={6}>
-                                            <Form.Label>First Name</Form.Label>
-                                            <Form.Control
-                                                required
-                                                name="firstName"
-                                                type="text"
-                                                placeholder="Enter first name"
-                                                value=""
-                                                handleChange={handleChange}
-                                                autoFocus
-                                                fullWidth
-                                            />
-                                        </Form.Group>
-                                        {/* start of lastName */}
-                                        <Form.Group controlId="lastName" xs={12} md={6}>
-                                            <Form.Label>Last Name</Form.Label>
-                                            <Form.Control
-                                                required
-                                                name="lastName"
-                                                type="lastName"
-                                                placeholder="Enter last name"
-                                                value=""
-                                                handleChange={handleChange}
-                                                fullWidth
-                                            />
-                                        </Form.Group>
+                                        <Row>
+                                            <Col xs={12} md={6}>
+                                                {/* start of firstName */}
+                                                <Form.Group controlId="firstName">
+                                                    <Form.Label>First Name</Form.Label>
+                                                    <Form.Control
+                                                        required
+                                                        name="firstName"
+                                                        type="text"
+                                                        placeholder="Enter first name"
+                                                        value=""
+                                                        handleChange={handleChange}
+                                                        autoFocus
+                                                        fullWidth
+                                                    />
+                                                </Form.Group>
+                                            </Col>
+                                            <Col xs={12} md={6}>
+                                                {/* start of lastName */}
+                                                <Form.Group controlId="lastName">
+                                                    <Form.Label>Last Name</Form.Label>
+                                                    <Form.Control
+                                                        required
+                                                        name="lastName"
+                                                        type="text"
+                                                        placeholder="Enter last name"
+                                                        value=""
+                                                        handleChange={handleChange}
+                                                        fullWidth
+                                                    />
+                                                </Form.Group>
+                                            </Col>
+                                        </Row>
                                     </>
                                 )
                             }
@@ -84,7 +94,7 @@ const Auth = () => {
                             {
                                 isSignup && 
                                     <Form.Group controlId="confirmPassword" xs={12} md={6}>
-                                        <Form.Label>confirmPassword</Form.Label>
+                                        <Form.Label>Confirm Password</Form.Label>
                                         <Form.Control
                                             required
                                             name="confirmPassword"
@@ -96,12 +106,18 @@ const Auth = () => {
                                         />
                                     </Form.Group>
                             }
-                            <Button variant="primary" type="submit" fullWidth>
-                                {isSignup ? 'Sign Up' : 'Sign In'}
-                            </Button>
-                            {/* <Button className="ml-2" variant="info" onClick={clear}>
-                                Clear
-                            </Button> */}
+                            <Row>
+                                <Col xs={12} md={4}>
+                                    <Button variant="primary" type="submit" fullWidth>
+                                        {isSignup ? 'Sign Up' : 'Sign In'}
+                                    </Button>
+                                </Col>
+                                <Col xs={12} md={8}>
+                                    <Button variant="light" onClick={switchMode}>
+                                        {isSignup ? 'Already have an account? Sign In' : "Don't have an account? Sign Up"}
+                                    </Button>
+                                </Col>
+                            </Row>
                         </Form>
                     </Card.Body>
                 </Card>
