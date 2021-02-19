@@ -4,17 +4,29 @@ import { GoogleLogin } from 'react-google-login';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
+import { signin, signup } from '../../actions/auth';
+
+const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '', };
+
 const Auth = () => {
     const [isSignup, setIsSignup] = useState(false);
+    const [formData, setFormData] = useState(initialState);
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const handleSubmit = () => {
-
+    const handleSubmit = (e) => {
+        e.preventDefault(); // stop page from reloading when submit
+            
+        if(isSignup) {
+            dispatch(signup(formData, history));
+        } else {
+            dispatch(signin(formData, history));
+        }
     };
 
-    const handleChange = () => {
-
+    const handleChange = (e) => {
+        // sets form data state
+        setFormData({ ... formData, [e.target.name]: e.target.value });
     };
 
     const switchMode = () => {
@@ -64,7 +76,7 @@ const Auth = () => {
                                                         name="firstName"
                                                         type="text"
                                                         placeholder="Enter first name"
-                                                        value=""
+                                                        // value=""
                                                         handleChange={handleChange}
                                                         autoFocus
                                                     />
@@ -79,7 +91,7 @@ const Auth = () => {
                                                         name="lastName"
                                                         type="text"
                                                         placeholder="Enter last name"
-                                                        value=""
+                                                        // value=""
                                                         handleChange={handleChange}
                                                     />
                                                 </Form.Group>
@@ -96,7 +108,7 @@ const Auth = () => {
                                     name="email"
                                     type="email"
                                     placeholder="Enter email address"
-                                    value=""
+                                    // value=""
                                     handleChange={handleChange}
                                 />
                             </Form.Group>
@@ -108,7 +120,7 @@ const Auth = () => {
                                     name="password"
                                     type="password"
                                     placeholder="Enter password"
-                                    value=""
+                                    // value=""
                                     handleChange={handleChange}
                                 />
                             </Form.Group>
@@ -122,7 +134,7 @@ const Auth = () => {
                                             name="confirmPassword"
                                             type="password"
                                             placeholder="Re-enter password"
-                                            value=""
+                                            // value=""
                                             handleChange={handleChange}
                                         />
                                     </Form.Group>
