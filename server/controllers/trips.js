@@ -1,5 +1,4 @@
 //this file is for the handlers for routes
-
 import mongoose from 'mongoose';
 
 //gives access to trip model
