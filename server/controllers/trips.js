@@ -66,12 +66,29 @@ export const deleteTrip = async (req, res) => {
 export const likeTrip = async (req, res) => {
     const { id } = req.params;
 
+    //check if user is authenicated
+    if(!req.userId) return res.json({ message: 'Unauthenticated' });
+
+    //check is the trip that the user wants to like valid
     if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No trip with that id');
 
     //return trip by id
     const trip = await TripOverView.findById(id);
-    //update trip by id, second param is where the updates are passed in (likeCount object increment by 1), third param sets the object new to true
-    const updatedTrip = await TripOverView.findByIdAndUpdate(id, { likeCount: trip.likeCount + 1 }, { new: true });
+
+    //check if users id is already in the liked section or not
+    const index = trip.likes.findIndex((id) => id === String(req.userId));
+    //if above returns true users id has already liked the post
+
+    if(index === -1) {
+        //like the trip (add users id to likes array)
+        trip.likes.push(req.userId);
+    } else {
+        //unlike the trip (remove users id from likes array)
+        trip.likes = trip.likes.filter((id) => id !== String(req.userId)); //loops through all ids in array and filter out users id
+    }
+
+    //update trip by id, second param is where the updates are passed in (update the whole trip), third param sets the object new to true
+    const updatedTrip = await TripOverView.findByIdAndUpdate(id, trip, { new: true });
 
     res.json(updatedTrip);
 
