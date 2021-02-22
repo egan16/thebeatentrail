@@ -3,12 +3,12 @@ import { Link, useHistory, useLocation } from 'react-router-dom';
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import { useDispatch } from 'react-redux';
+import decode from 'jwt-decode';
 
 const Navigation = () => {
 
   //set user state from localstorage
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
-
   const dispatch = useDispatch();  
   const history = useHistory();
   const location = useLocation();
@@ -16,8 +16,8 @@ const Navigation = () => {
   //logout fuction to call logout action
   const logout = () => {
     dispatch({ type: 'LOGOUT' });
-    //push to home when user logs out
-    history.push('/');
+    //push to auth form when user logs out
+    history.push('/auth');
     //set user = null
     setUser(null);
   };
@@ -25,12 +25,19 @@ const Navigation = () => {
   //automatically re-navigate 
   useEffect(() => {
     //if token exists send to token variable
-    // const token = user?.token; //THIS COMMMENTED OUT BECAUSE CAUSING ERROR
+    const token = user?.token;
 
-    //manual sign up token (JWS) here when done
+    //if token exists...
+    if(token) {
+      //decode the token
+      const decodedToken = decode(token);
+
+      if(decodedToken.exp * 1000 < new Date().getTime()) logout();
+    }
 
     // when location changes set the user
     setUser(JSON.parse(localStorage.getItem('profile')));
+    // eslint-disable-next-line
   }, [location]);
 
   return (
