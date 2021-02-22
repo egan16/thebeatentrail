@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 const tripSchema = mongoose.Schema({
     title: String,
     description: String,
+    name: String,
     user: String,
     tags: [String],
     selectedFile: String,
