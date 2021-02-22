@@ -17,6 +17,8 @@ const TripForm = ({ currentId, setCurrentId }) =>  {
   // get the trip with the current id, if no current id have null
   const trip = useSelector((state) => currentId ? state.trips.find((t) => t._id == currentId) : null);
   const dispatch = useDispatch();
+  //gets the user from local storage
+  const user = JSON.parse(localStorage.getItem('profile'));
 
   //useEffect to populate values of form if there is a current id
   //useEffect has 2 param: callback function and dependecy array
@@ -31,11 +33,12 @@ const TripForm = ({ currentId, setCurrentId }) =>  {
 
     //if statement to check if there is trip id in state.
     if(currentId) {
-      //make form update current trip
-      dispatch(updateTrip(currentId, tripData));
+      //make form update current trip, with the same users name
+      dispatch(updateTrip(currentId, { ...tripData, name: user?.result?.name }));
     } else {
       //if there is no trip id...
-      dispatch(createTrip(tripData)); // dispatch createTrip action & pass in all the trip state
+      // dispatch createTrip action & pass in all the trip state with the current users name
+      dispatch(createTrip({ ...tripData, name: user?.result?.name }));
     }
     clear();
   }
