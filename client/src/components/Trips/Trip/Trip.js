@@ -8,6 +8,24 @@ import { deleteTrip, likeTrip } from '../../../actions/trips';
 //pass in trip and setCurrentId as props
 const Trip = ({ trip, setCurrentId }) =>  {
   const dispatch = useDispatch(); //initialise dispatch variable to = useDispatch hook
+  //get user from local storage
+  const user = JSON.parse(localStorage.getItem('profile'));
+
+  //for Likes
+  const Likes = () => {
+    if (trip.likes.length > 0) {
+      //check if likes array cotains current id of the logged in user (google or app)
+      return trip.likes.find((like) => like === (user?.result?.googleId || user?.result?._id))
+        ? (
+          //dislplay like depending on how many likes the trip already has
+          <>&nbsp;{trip.likes.length > 2 ? `You and ${trip.likes.length - 1} others` : `${trip.likes.length} like${trip.likes.length > 1 ? 's' : ''}` }</>
+        ) : (
+          <>&nbsp;{trip.likes.length} {trip.likes.length === 1 ? 'Like' : 'Likes'}</>
+        );
+    }
+
+    return <>&nbsp;Like</>;
+  };
 
   return (
     <Card style={{ width: '18rem' }} className="mb-4" >
@@ -21,7 +39,7 @@ const Trip = ({ trip, setCurrentId }) =>  {
         <Card.Subtitle className="mb-2 text-muted">{trip.name}</Card.Subtitle>
         {/* //Edit button now stores trip id state */}
         <Button variant="primary" className="mr-2" onClick={() => setCurrentId(trip._id)}>Edit</Button>
-        <Button variant="primary" className="mr-2" onClick={() => dispatch(likeTrip(trip._id)) }>Like {trip.likeCount}</Button>
+        <Button variant="primary" className="mr-2" disabled={!user?.result} onClick={() => dispatch(likeTrip(trip._id)) }><Likes /></Button>
         <Button variant="primary" className="mr-2" onClick={() => dispatch(deleteTrip(trip._id)) }>Delete</Button>
       </Card.Body>
     </Card>

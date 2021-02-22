@@ -46,7 +46,7 @@ const TripForm = ({ currentId, setCurrentId }) =>  {
 
   const clear = () => {
     //reset trip id to null
-    setCurrentId(null);
+    setCurrentId(0);
     //reset trip data to empty strings
     setTripData({
       title: '',
@@ -69,7 +69,7 @@ const TripForm = ({ currentId, setCurrentId }) =>  {
           <Card.Link as={Link} to='/auth'>Sign In</Card.Link>
         </Card.Body>
       </Card>
-    )
+    );
   }
 
   return (
