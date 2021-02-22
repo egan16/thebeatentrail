@@ -38,12 +38,14 @@ const Trip = ({ trip, setCurrentId }) =>  {
         <Card.Subtitle className="mb-2 text-muted">{moment(trip.createdAt).fromNow()}</Card.Subtitle>
         <Card.Subtitle className="mb-2 text-muted">{trip.name}</Card.Subtitle>
         {/* //Edit button now stores trip id state */}
-        <Button variant="primary" className="mr-2" onClick={() => setCurrentId(trip._id)}>Edit</Button>
+        <Button variant="outline-info" className="mr-2" onClick={() => setCurrentId(trip._id)}>
+          <i className="bi bi-three-dots"></i>
+        </Button>
         <Button variant="light" className="mr-2" disabled={!user?.result} onClick={() => dispatch(likeTrip(trip._id)) }>
           <Likes />
         </Button>
-        <Button variant="primary" className="mr-2" onClick={() => dispatch(deleteTrip(trip._id)) }>
-          Delete
+        <Button variant="outline-danger" className="mr-2" onClick={() => dispatch(deleteTrip(trip._id)) }>
+          <i className="bi bi-trash"></i>
         </Button>
       </Card.Body>
     </Card>
