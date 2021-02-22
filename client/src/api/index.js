@@ -3,6 +3,17 @@ import axios from 'axios'; //used to make api calls
 //URL on backend route
 const API = axios.create({ baseURL: 'http://localhost:5000' });
 
+//middleware so backend can verify token to prove user is logged in
+// using this with api requests adds using headers in requests
+API.interceptors.request.use((req) => {
+    //check if token is in localStorage - profile is where token is stored
+    if(localStorage.getItem('profile')) {
+        req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('profile')).token}`;
+    }
+
+    return req;
+});
+
 //EXPORTING trip API REQUESTS
 export const fetchTrips = () => API.get('/trips'); //exported function to get trips from backend on another file
 export const createTrip = (newTrip) => API.post('/trips', newTrip); //exported function to create trip

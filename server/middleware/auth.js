@@ -9,7 +9,7 @@ const auth = async (req, res, next) => {
     //to check is the users token valid
     try {
         //get token from the frontend (token is in the first position in the array after its split)
-        const token = req.headers.authorization.split(" ")[1];
+        const token = req.headers.Authorization.split(" ")[1];
         //is token the applications token or googles Oauth token (apps token is less then 500)
         const isCustomAuth = token.length < 500;
 
