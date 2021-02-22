@@ -18,13 +18,13 @@ const Trip = ({ trip, setCurrentId }) =>  {
       return trip.likes.find((like) => like === (user?.result?.googleId || user?.result?._id))
         ? (
           //dislplay like depending on how many likes the trip already has
-          <>&nbsp;{trip.likes.length > 2 ? `You and ${trip.likes.length - 1} others` : `${trip.likes.length} like${trip.likes.length > 1 ? 's' : ''}` }</>
+          <><i className="bi bi-hand-thumbs-up-fill"></i>&nbsp;{trip.likes.length > 2 ? `You and ${trip.likes.length - 1} others` : `${trip.likes.length} like${trip.likes.length > 1 ? 's' : ''}` }</>
         ) : (
-          <>&nbsp;{trip.likes.length} {trip.likes.length === 1 ? 'Like' : 'Likes'}</>
+          <><i className="bi bi-hand-thumbs-up"></i>&nbsp;{trip.likes.length} {trip.likes.length === 1 ? 'Like' : 'Likes'}</>
         );
     }
 
-    return <>&nbsp;Like</>;
+    return <><i className="bi bi-hand-thumbs-up"></i>&nbsp;Like</>;
   };
 
   return (
@@ -39,8 +39,12 @@ const Trip = ({ trip, setCurrentId }) =>  {
         <Card.Subtitle className="mb-2 text-muted">{trip.name}</Card.Subtitle>
         {/* //Edit button now stores trip id state */}
         <Button variant="primary" className="mr-2" onClick={() => setCurrentId(trip._id)}>Edit</Button>
-        <Button variant="primary" className="mr-2" disabled={!user?.result} onClick={() => dispatch(likeTrip(trip._id)) }><Likes /></Button>
-        <Button variant="primary" className="mr-2" onClick={() => dispatch(deleteTrip(trip._id)) }>Delete</Button>
+        <Button variant="light" className="mr-2" disabled={!user?.result} onClick={() => dispatch(likeTrip(trip._id)) }>
+          <Likes />
+        </Button>
+        <Button variant="primary" className="mr-2" onClick={() => dispatch(deleteTrip(trip._id)) }>
+          Delete
+        </Button>
       </Card.Body>
     </Card>
   );
