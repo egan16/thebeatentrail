@@ -69,5 +69,6 @@ export const signup = async (req, res) => {
     } catch (error) {
         //if token creation was not successful
         res.status(500).json({ message: "Something went wrong with token" });
+        console.log(error);
     }
 }

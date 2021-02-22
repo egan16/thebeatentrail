@@ -8,7 +8,8 @@ const userSchema = mongoose.Schema({
     id: { type: String } 
 });
 
-//turn schema into a model
-const User = mongoose.model('User', userSchema)
+// //turn schema into a model
+// const User = mongoose.model('User', userSchema)
 
-export default User;
+// export default User;
+export default mongoose.model("User", userSchema);

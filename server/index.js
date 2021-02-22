@@ -6,7 +6,7 @@ import cors from 'cors';
 //import for trips routes
 import tripRoutes from './routes/trips.js';
 //import for user routes
-import userRoutes from './routes/users.js';
+import userRoutes from './routes/user.js';
 
 //initialise this application
 const app = express();
@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 
 //express middleware to connect trips.js to application
-//this changes the trip route from 'http://localhost:5000/' to 'http://localhost:5000/trips'
+//this changes the route from 'http://localhost:5000/' to 'http://localhost:5000/trips'
 app.use('/trips', tripRoutes);
 //user routes
 app.use('/user', userRoutes);

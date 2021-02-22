@@ -11,7 +11,7 @@ export const signin = (formData, history) => async (dispatch) => {
     } catch (error) {
         console.log(error);
     }
-}
+};
 
 export const signup = (formData, history) => async (dispatch) => {
     try {
@@ -24,4 +24,4 @@ export const signup = (formData, history) => async (dispatch) => {
     } catch (error) {
         console.log(error);
     }
-}
+};

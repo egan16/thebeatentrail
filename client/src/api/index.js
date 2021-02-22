@@ -11,5 +11,5 @@ export const deleteTrip = (id) => API.delete(`/trips/${id}`); //exported functio
 export const likeTrip = (id) => API.patch(`/trips/${id}/likeTrip`); //exported function to update likes on a trip by id
 
 //EXPORTING user API REQUESTS
-export const signIn = (formData) => API.post('/users/sigin', formData);
-export const signUp = (formData) => API.post('/users/sigup', formData);
+export const signIn = (formData) => API.post('/user/signin', formData);
+export const signUp = (formData) => API.post('/user/signup', formData);

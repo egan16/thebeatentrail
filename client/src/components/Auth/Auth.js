@@ -77,7 +77,7 @@ const Auth = () => {
                                                         type="text"
                                                         placeholder="Enter first name"
                                                         // value=""
-                                                        handleChange={handleChange}
+                                                        onChange={handleChange}
                                                         autoFocus
                                                     />
                                                 </Form.Group>
@@ -92,7 +92,7 @@ const Auth = () => {
                                                         type="text"
                                                         placeholder="Enter last name"
                                                         // value=""
-                                                        handleChange={handleChange}
+                                                        onChange={handleChange}
                                                     />
                                                 </Form.Group>
                                             </Col>
@@ -109,7 +109,7 @@ const Auth = () => {
                                     type="email"
                                     placeholder="Enter email address"
                                     // value=""
-                                    handleChange={handleChange}
+                                    onChange={handleChange}
                                 />
                             </Form.Group>
                             {/* start of password */}
@@ -121,7 +121,7 @@ const Auth = () => {
                                     type="password"
                                     placeholder="Enter password"
                                     // value=""
-                                    handleChange={handleChange}
+                                    onChange={handleChange}
                                 />
                             </Form.Group>
                             {
@@ -135,7 +135,7 @@ const Auth = () => {
                                             type="password"
                                             placeholder="Re-enter password"
                                             // value=""
-                                            handleChange={handleChange}
+                                            onChange={handleChange}
                                         />
                                     </Form.Group>
                             }
