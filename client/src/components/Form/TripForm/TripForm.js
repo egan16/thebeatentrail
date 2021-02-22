@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Button, Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import FileBase from 'react-file-base64';
 import { useDispatch, useSelector } from 'react-redux'; //useSelector - To retrieve the data in components from global redux store
 
@@ -53,6 +54,22 @@ const TripForm = ({ currentId, setCurrentId }) =>  {
       tags: '',
       selectedFile: ''
     });
+  }
+
+  //if no user in local storage
+  if(!user?.result?.name) {
+    //return card which says cannot create trip
+    return(
+      <Card className="mt-2">
+        <Card.Body>
+          <Card.Title>Please Sign In!</Card.Title>
+          <Card.Text>
+            You must sign in to create a trip and like other users trips.
+          </Card.Text>
+          <Card.Link as={Link} to='/auth'>Sign In</Card.Link>
+        </Card.Body>
+      </Card>
+    )
   }
 
   return (
