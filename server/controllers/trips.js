@@ -23,8 +23,8 @@ export const getTrips = async (req, res) => {
 export const createTrip = async (req, res) => {
     //post requests have access to request.body
     const trip = req.body;
-    //create new post
-    const newTrip = new TripOverView(trip);
+    //create new post with users id created with the trip
+    const newTrip = new TripOverView({ ...trip, user: req.userId, createdAt: new Date().toISOString() });
     try {
         await newTrip.save();
         //when save is successful:
