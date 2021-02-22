@@ -44,9 +44,12 @@ const Trip = ({ trip, setCurrentId }) =>  {
         <Button variant="light" className="mr-2" disabled={!user?.result} onClick={() => dispatch(likeTrip(trip._id)) }>
           <Likes />
         </Button>
-        <Button variant="outline-danger" className="mr-2" onClick={() => dispatch(deleteTrip(trip._id)) }>
-          <i className="bi bi-trash"></i>
-        </Button>
+        {/* if user of trip is logged in show delete button for that trip */}
+        {(user?.result?.googleId === trip?.user || user?.result?._id === trip?.user) && (
+          <Button variant="outline-danger" className="mr-2" onClick={() => dispatch(deleteTrip(trip._id)) }>
+            <i className="bi bi-trash"></i>
+          </Button>
+        )}
       </Card.Body>
     </Card>
   );
