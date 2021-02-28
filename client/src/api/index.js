@@ -24,3 +24,7 @@ export const likeTrip = (id) => API.patch(`/trips/${id}/likeTrip`); //exported f
 //EXPORTING user API REQUESTS
 export const signIn = (formData) => API.post('/user/signin', formData);
 export const signUp = (formData) => API.post('/user/signup', formData);
+
+//EXPORTING place API REQUESTS
+export const fetchPlaces = () => API.get('/places'); //exported function to get places from backend on another file
+export const createPlace = (newPlace) => API.post('/places', newPlace); //exported function to create place
