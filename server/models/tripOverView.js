@@ -20,6 +20,10 @@ const tripSchema = mongoose.Schema({
         type: [String],
         default: []
     },
+    // startPlace: {
+    //     type: mongoose.Schema.Types.ObjectId, 
+    //     ref: 'place'
+    // },
     createdAt: {
         type: Date,
         default: Date.now

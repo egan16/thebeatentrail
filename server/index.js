@@ -7,6 +7,8 @@ import cors from 'cors';
 import tripRoutes from './routes/trips.js';
 //import for user routes
 import userRoutes from './routes/user.js';
+//import for place routes
+import placeRoutes from './routes/places.js';
 
 //initialise this application
 const app = express();
@@ -22,6 +24,8 @@ app.use(cors());
 app.use('/trips', tripRoutes);
 //user routes
 app.use('/user', userRoutes);
+//place routes
+app.use('/places', placeRoutes);
 
 //MongoDB Atlas connection
 const CONNECTION_URL = 'mongodb+srv://mikeTBT:secret123@cluster0.9hada.mongodb.net/thebeatentrail?retryWrites=true&w=majority';
