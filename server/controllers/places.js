@@ -24,11 +24,13 @@ export const createPlace = async (req, res) => {
     //post requests have access to request.body
     const place = req.body;
 
+    const newPlace = new Place(place);
+
     try {
-        await place.save();
+        await newPlace.save();
         //when save is successful:
         //respond with 201 creation success status and send new trip in as json
-        res.status(201).json(place);
+        res.status(201).json(newPlace);
     } catch (error) {
         //if unsuccessful when creating new trip
         res.status(409).json({ message: error.message });
