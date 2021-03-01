@@ -14,6 +14,7 @@ const TripForm = ({ currentId, setCurrentId }) =>  {
     description: '',
     tags: '',
     selectedFile: ''
+    // startPlace: null
   });
   // get the trip with the current id, if no current id have null
   const trip = useSelector((state) => currentId ? state.trips.find((t) => t._id == currentId) : null);
@@ -53,6 +54,7 @@ const TripForm = ({ currentId, setCurrentId }) =>  {
       description: '',
       tags: '',
       selectedFile: ''
+      // startPlace: null
     });
   }
 
