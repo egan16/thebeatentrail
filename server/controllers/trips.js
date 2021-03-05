@@ -3,12 +3,15 @@ import mongoose from 'mongoose';
 
 //gives access to trip model
 import TripOverView from '../models/tripOverView.js';
+// import Place from '../models/place.js';
 
 //arrow function will run when http://localhost:5000/trips is run
 export const getTrips = async (req, res) => {
     try {
         //get all trips
-        const tripOverViews = await TripOverView.find();
+        const tripOverViews = await TripOverView.find({})
+                                                .populate('firstPlace')
+                                                .exec();
         //log the trips
         console.log(tripOverViews);
         //respond with OK status and return JSON object of all trips

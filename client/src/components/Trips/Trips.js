@@ -6,13 +6,11 @@ import Trip from './Trip/Trip';
 
 // pass in setCurrentId as props from state in parent App.js
 const Trips = ({ setCurrentId }) =>  {
-  //initialise useSelector as hook
-  //inside of useSelector() there is a callback function
-  //state is a parameter of the callbacback function to get access to state (global redux store)
-  //then return the trips in state (called trips in combined reducers)
-  const trips = useSelector((state) => state.trips);
-
-  console.log(trips);
+    //initialise useSelector as hook
+    //inside of useSelector() there is a callback function
+    //state is a parameter of the callbacback function to get access to state (global redux store)
+    //then return the trips in state (called trips in combined reducers)
+    const trips = useSelector((state) => state.trips);
 
     return (
       // if there are no trips show a spinner, if there are trips show trips

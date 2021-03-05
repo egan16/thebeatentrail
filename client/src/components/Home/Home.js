@@ -6,11 +6,13 @@ import {
 import { useDispatch } from 'react-redux'; //hook to dispatch an action
 
 import { getTrips } from '../../actions/trips';
+
 import TripForm from '../Form/TripForm/TripForm';
 import Trips from '../Trips/Trips';
 
 const Home = () => {
     const [currentId, setCurrentId] = useState(null); //initialise variable to = useState hook
+
     //Define the dispatch to be equal to useDispatch() hook
     const dispatch = useDispatch();
   
@@ -20,6 +22,7 @@ const Home = () => {
       //dispatch an action
       dispatch(getTrips());
     }, [currentId, dispatch]);
+
     return (
         <Row>
           <Col sm={8}>

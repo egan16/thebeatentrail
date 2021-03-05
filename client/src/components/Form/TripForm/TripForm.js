@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Button, Card } from 'react-bootstrap';
+import { Form, Button, Card, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import FileBase from 'react-file-base64';
 import { useDispatch, useSelector } from 'react-redux'; //useSelector - To retrieve the data in components from global redux store
 
 import { createTrip, updateTrip } from '../../../actions/trips';
+import { getPlaces } from '../../../actions/places';
 
 // pass in currentId, setCurrentId as props from state in parent App.js
 const TripForm = ({ currentId, setCurrentId }) =>  {
@@ -13,12 +14,21 @@ const TripForm = ({ currentId, setCurrentId }) =>  {
     title: '',
     description: '',
     tags: '',
-    selectedFile: ''
-    // startPlace: null
+    selectedFile: '',
+    startPlace: ''
   });
+  
   // get the trip with the current id, if no current id have null
   const trip = useSelector((state) => currentId ? state.trips.find((t) => t._id == currentId) : null);
+  // get the places from state
+  const places = useSelector((state) => state.places);
+
+  console.log(places);
+  
+  //dispatch for trip
   const dispatch = useDispatch();
+  //dispatch for place
+  const dispatchPlace = useDispatch();
   //gets the user from local storage
   const user = JSON.parse(localStorage.getItem('profile'));
 
@@ -27,7 +37,14 @@ const TripForm = ({ currentId, setCurrentId }) =>  {
   //when trip value changes from null to a trip run the callback function
   useEffect(() => {
     if(trip) setTripData(trip);
-  }, [trip])
+  }, [trip]) 
+
+  //useEffect to get places by dispatching getTrips action
+  useEffect(() => {
+    console.log(getPlaces());
+    //dispatch an action
+    dispatchPlace(getPlaces());
+  }, [dispatchPlace]);
 
   // handleSubmit function handler
   const handleSubmit = (e) => {
@@ -53,8 +70,8 @@ const TripForm = ({ currentId, setCurrentId }) =>  {
       title: '',
       description: '',
       tags: '',
-      selectedFile: ''
-      // startPlace: null
+      selectedFile: '',
+      startPlace: ''
     });
   }
 
@@ -95,6 +112,23 @@ const TripForm = ({ currentId, setCurrentId }) =>  {
               // ... tripData, title: e.target.value <- this only changes specified state of the trip object
               onChange={(e) => setTripData({ ... tripData, title: e.target.value })}
             />
+          </Form.Group>
+          {/* start of startPlace */}
+          <Form.Group controlId="startPlace">
+            <Form.Label>Starting city</Form.Label>
+            <Col sm={10}>
+              {/* loop through places */}
+              {places.map((place) => (
+                <Form.Check 
+                    key={place._id}
+                    type="radio"
+                    name="startPlace"
+                    value={place._id}
+                    label={place.title}
+                    onChange={(e) => setTripData({ ... tripData, startPlace: e.target.value })}
+                />
+              ))}
+            </Col>
           </Form.Group>
           {/* start of title */}
           <Form.Group controlId="description">

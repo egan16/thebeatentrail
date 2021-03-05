@@ -22,7 +22,7 @@ const tripSchema = mongoose.Schema({
     },
     startPlace: {
         type: mongoose.Schema.Types.ObjectId, 
-        ref: 'place'
+        ref: 'Place'
     },
     createdAt: {
         type: Date,
