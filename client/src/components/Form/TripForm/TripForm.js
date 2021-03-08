@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Button, Card, Col } from 'react-bootstrap';
+import { Form, Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import FileBase from 'react-file-base64';
 import { useDispatch, useSelector } from 'react-redux'; //useSelector - To retrieve the data in components from global redux store
@@ -115,20 +115,24 @@ const TripForm = ({ currentId, setCurrentId }) =>  {
           </Form.Group>
           {/* start of startPlace */}
           <Form.Group controlId="startPlace">
-            <Form.Label>Starting city</Form.Label>
-            <Col sm={10}>
-              {/* loop through places */}
-              {places.map((place) => (
-                <Form.Check 
+            <Form.Label>Starting city</Form.Label>              
+              <Form.Control 
+                as="select"
+                defaultValue="Choose..."
+                type="text"
+                name="startPlace"
+                onChange={(e) => setTripData({ ... tripData, startPlace: e.target.value })}
+              >
+                {/* loop through places */}
+                {places.map((place) => (
+                  <option 
                     key={place._id}
-                    type="radio"
-                    name="startPlace"
                     value={place._id}
-                    label={place.title}
-                    onChange={(e) => setTripData({ ... tripData, startPlace: e.target.value })}
-                />
-              ))}
-            </Col>
+                  >
+                    {place.title}
+                  </option>
+                ))}
+              </Form.Control>
           </Form.Group>
           {/* start of title */}
           <Form.Group controlId="description">
