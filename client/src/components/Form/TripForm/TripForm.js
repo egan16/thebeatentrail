@@ -15,7 +15,8 @@ const TripForm = ({ currentId, setCurrentId }) =>  {
     description: '',
     tags: '',
     selectedFile: '',
-    startPlace: ''
+    startPlace: '',
+    endPlace: ''
   });
   
   // get the trip with the current id, if no current id have null
@@ -71,7 +72,8 @@ const TripForm = ({ currentId, setCurrentId }) =>  {
       description: '',
       tags: '',
       selectedFile: '',
-      startPlace: ''
+      startPlace: '',
+      endPlace: ''
     });
   }
 
@@ -122,6 +124,27 @@ const TripForm = ({ currentId, setCurrentId }) =>  {
                 type="text"
                 name="startPlace"
                 onChange={(e) => setTripData({ ... tripData, startPlace: e.target.value })}
+              >
+                {/* loop through places */}
+                {places.map((place) => (
+                  <option 
+                    key={place._id}
+                    value={place._id}
+                  >
+                    {place.title}
+                  </option>
+                ))}
+              </Form.Control>
+          </Form.Group>
+          {/* start of endPlace */}
+          <Form.Group controlId="endPlace">
+            <Form.Label>Final city</Form.Label>              
+              <Form.Control 
+                as="select"
+                defaultValue="Choose..."
+                type="text"
+                name="endPlace"
+                onChange={(e) => setTripData({ ... tripData, endPlace: e.target.value })}
               >
                 {/* loop through places */}
                 {places.map((place) => (

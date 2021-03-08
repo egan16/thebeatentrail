@@ -10,8 +10,9 @@ export const getTrips = async (req, res) => {
     try {
         //get all trips
         const tripOverViews = await TripOverView.find({})
-                                                .populate('firstPlace')
-                                                .exec();
+                                                // .populate('startPlace', 'title')
+                                                // .populate('endPlace', 'title')
+                                                // .exec();
         //log the trips
         console.log(tripOverViews);
         //respond with OK status and return JSON object of all trips

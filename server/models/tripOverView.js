@@ -24,6 +24,10 @@ const tripSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'Place'
     },
+    endPlace: {
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'Place'
+    },
     createdAt: {
         type: Date,
         default: Date.now
