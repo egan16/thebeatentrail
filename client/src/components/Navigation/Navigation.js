@@ -44,7 +44,7 @@ const Navigation = () => {
       <Navbar bg="light" expand="lg" className="mb-5">
         <Navbar.Brand as={Link} to='/'>
             <img
-                src="logo.svg"
+                src="logoblack.svg"
                 width="30"
                 height="30"
                 className="d-inline-block align-top"
