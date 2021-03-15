@@ -2,11 +2,11 @@ import mongoose from 'mongoose';
 
 const ratingSchema = mongoose.Schema({
     
-    user_id: {
+    userId: {
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'User'
     },
-    place_id: {
+    itemId: {
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'Place'
     }
