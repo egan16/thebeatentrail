@@ -10,8 +10,10 @@ export const getTrips = async (req, res) => {
     try {
         //get all trips
         const tripOverViews = await TripOverView.find({})
-                                                // .populate('startPlace', 'title')
-                                                // .populate('endPlace', 'title')
+                                                // .populate({ path: 'startPlace', select: 'title' })
+                                                // .populate({ path: 'endPlace', select: 'title' })
+                                                // .populate('startPlace')
+                                                // .populate('endPlace')
                                                 // .exec();
         //log the trips
         console.log(tripOverViews);
@@ -86,9 +88,26 @@ export const likeTrip = async (req, res) => {
     if(index === -1) {
         //like the trip (add users id to likes array)
         trip.likes.push(req.userId);
+
+        //CAN I ADD CREATE RATING REQUEST HERE????
+        //SOMETHING LIKE THIS BELOW>>>>
+        // const trip = req.body;
+        // //create new post with users id created with the trip
+        // const newTrip = new TripOverView({ ...trip, user: req.userId, createdAt: new Date().toISOString() });
+        // try {
+        //     await newTrip.save();
+        //     //when save is successful:
+        //     //respond with 201 creation success status and send new trip in as json
+        //     res.status(201).json(newTrip);
+        // } catch (error) {
+        //     //if unsuccessful when creating new trip
+        //     res.status(409).json({ message: error.message });
+        // }
     } else {
         //unlike the trip (remove users id from likes array)
         trip.likes = trip.likes.filter((id) => id !== String(req.userId)); //loops through all ids in array and filter out users id
+
+        //CAN I ADD DELETE RATING REQUEST HERE????
     }
 
     //update trip by id, second param is where the updates are passed in (update the whole trip), third param sets the object new to true
