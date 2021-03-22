@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import { PythonShell } from 'python-shell';
 
 //import for trips routes
 import tripRoutes from './routes/trips.js';
@@ -26,6 +27,21 @@ app.use('/trips', tripRoutes);
 app.use('/user', userRoutes);
 //place routes
 app.use('/places', placeRoutes);
+
+
+// PythonShell.run('./RS.py', null, function (err, result) {
+//     if (err) throw err;
+//     // result is an array consisting of messages collected  
+//     // during execution of script.
+//     console.log('finished');
+//   });
+
+PythonShell.runString('x=1+1;print(x)', null, function (err, result) {
+    if (err) throw err;
+    // result is an array consisting of messages collected  
+    //during execution of script.
+    console.log('finished: result of x is ' + result);
+  });
 
 //MongoDB Atlas connection
 const CONNECTION_URL = 'mongodb+srv://mikeTBT:secret123@cluster0.9hada.mongodb.net/thebeatentrail?retryWrites=true&w=majority';
