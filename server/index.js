@@ -2,7 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
-import { PythonShell } from 'python-shell';
+import { PythonShell } from 'python-shell'; //to allow python to work with node
 
 //import for trips routes
 import tripRoutes from './routes/trips.js';
@@ -29,11 +29,13 @@ app.use('/user', userRoutes);
 app.use('/places', placeRoutes);
 
 
+//PythonShell RS INTEGRATION ->
+
 // PythonShell.run('./RS.py', null, function (err, result) {
 //     if (err) throw err;
 //     // result is an array consisting of messages collected  
 //     // during execution of script.
-//     console.log('finished');
+//     console.log('finished' + result);
 //   });
 
 PythonShell.runString('x=1+1;print(x)', null, function (err, result) {
@@ -42,6 +44,34 @@ PythonShell.runString('x=1+1;print(x)', null, function (err, result) {
     //during execution of script.
     console.log('finished: result of x is ' + result);
   });
+
+
+//CHILD PROCCESS RS INTEGRATION ->
+
+// app.get('/name', callName);
+// function callName(req, res) { 
+      
+//     // Use child_process.spawn method from  
+//     // child_process module and assign it 
+//     // to variable spawn 
+//     const spawn = require("child_process").spawn; 
+      
+//     // Parameters passed in spawn - 
+//     // 1. type_of_script 
+//     // 2. list containing Path of the script 
+//     //    and arguments for the script  
+      
+//     // E.g : http://localhost:3000/name?firstname=Mike&lastname=Will 
+//     // so, first name = Mike and last name = Will 
+//     const process = spawn('python',["./RS.py"] ); 
+  
+//     // Takes stdout data from script which executed 
+//     // with arguments and send this data to res object 
+//     process.stdout.on('data', function(data) { 
+//         res.send(data.toString());
+//         console.log(data);
+//     } ) 
+// } 
 
 //MongoDB Atlas connection
 const CONNECTION_URL = 'mongodb+srv://mikeTBT:secret123@cluster0.9hada.mongodb.net/thebeatentrail?retryWrites=true&w=majority';
