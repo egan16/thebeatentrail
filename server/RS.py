@@ -3,11 +3,10 @@
 
 # In[20]:
 
-
 import pandas as pd
 import numpy as np
 
-userItemData = pd.read_csv('project_ratings_adapted.csv')
+userItemData = pd.read_csv('./project_ratings_adapted.csv')
 userItemData
 
 
