@@ -5,6 +5,8 @@ import Nav from "react-bootstrap/Nav";
 import { useDispatch } from 'react-redux';
 import decode from 'jwt-decode';
 
+import './Nav.css';
+
 const Navigation = () => {
 
   //set user state from localstorage
@@ -41,11 +43,18 @@ const Navigation = () => {
   }, [location]);
 
   return (
-      <Navbar bg="light" expand="lg" className="mb-5">
+      <Navbar expand="lg" className="mb-5 bg-color">
         <Navbar.Brand as={Link} to='/'>
             <img
-                src="logoblack.svg"
+                src="logowhite.svg"
                 width="30"
+                height="30"
+                className="d-inline-block align-top"
+                alt="The Beaten Trail"
+            />{' '}
+            <img
+                src="namelogowhite.svg"
+                width="150"
                 height="30"
                 className="d-inline-block align-top"
                 alt="The Beaten Trail"
@@ -53,35 +62,35 @@ const Navigation = () => {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav.Item>
+          {/* <Nav.Item>
             <Nav.Link as={Link} to='/'>Home</Nav.Link>
-          </Nav.Item>
+          </Nav.Item> */}
           {user === null &&
           <Nav.Item className="ml-auto">
-            <Nav.Link as={Link} to='/auth'>Sign In</Nav.Link>
+            <Nav.Link as={Link} to='/auth' className="item-color">Sign In</Nav.Link>
           </Nav.Item>}
           {user !== null &&
-            <Navbar.Brand href="#home" className="ml-auto">
+            <Navbar.Brand className="ml-auto">
                 <img
                     src={user?.result.imageUrl}
                     width="30"
                     height="30"
-                    className="d-inline-block align-top"
+                    className="d-inline-block align-top profileImg"
                     alt={user?.result.name.charAt(0)}
                 />
             </Navbar.Brand>}
           {user !== null && 
-            <Navbar.Text>
-              <a href="#login">{user?.result.name}</a>
+            <Navbar.Text className="nav-text">
+              {user?.result.name}
             </Navbar.Text>
           }
             {user !== null &&
           <Nav.Item>
-            <Nav.Link onClick={logout}>Logout</Nav.Link>
+            <Nav.Link onClick={logout} className="item-color">Logout</Nav.Link>
           </Nav.Item>}
-          <Nav.Item>
+          {/* <Nav.Item> */}
               {/* <Nav.Link><Image alt={user.result.name} src={user.result.imageUrl} roundedCircle>{user.result.name.charAt(0)}</Image></Nav.Link> */}
-          </Nav.Item>
+          {/* </Nav.Item> */}
         </Navbar.Collapse>
       </Navbar>
   )
