@@ -6,6 +6,8 @@ import { useHistory } from 'react-router-dom';
 
 import { signin, signup } from '../../actions/auth';
 
+import './Auth.css';
+
 const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '', };
 
 const Auth = () => {
@@ -56,9 +58,9 @@ const Auth = () => {
     return (
         <Row>
             <Col xs={12} md={{ span: 6, offset: 3 }} lg={{ span: 6, offset: 3 }}>
-                <Card className="mt-2">
+                <Card className="mt-2 no-border">
                     <Card.Body>
-                        <Card.Title>{isSignup ? 'Sign Up' : 'Sign In'}</Card.Title>
+                        <Card.Title className="mb-4">{isSignup ? 'Sign Up' : 'Sign In'}</Card.Title>
                         {/* start of Form */}
                         {/* onSubmit handler attached to form to execute handleSubmit function when button clicked  */}
                         <Form onSubmit={handleSubmit}>
@@ -72,6 +74,7 @@ const Auth = () => {
                                                 <Form.Group controlId="firstName">
                                                     <Form.Label>First Name</Form.Label>
                                                     <Form.Control
+                                                        className="input-box"
                                                         required
                                                         name="firstName"
                                                         type="text"
@@ -87,6 +90,7 @@ const Auth = () => {
                                                 <Form.Group controlId="lastName">
                                                     <Form.Label>Last Name</Form.Label>
                                                     <Form.Control
+                                                        className="input-box"
                                                         required
                                                         name="lastName"
                                                         type="text"
@@ -104,6 +108,7 @@ const Auth = () => {
                             <Form.Group controlId="email" xs={12} md={6}>
                                 <Form.Label>Email Address</Form.Label>
                                 <Form.Control
+                                    className="input-box"
                                     required
                                     name="email"
                                     type="email"
@@ -116,6 +121,7 @@ const Auth = () => {
                             <Form.Group controlId="password" xs={12} md={6}>
                                 <Form.Label>Password</Form.Label>
                                 <Form.Control
+                                    className="input-box"
                                     required
                                     name="password"
                                     type="password"
@@ -130,19 +136,18 @@ const Auth = () => {
                                     <Form.Group controlId="confirmPassword" xs={12} md={6}>
                                         <Form.Label>Confirm Password</Form.Label>
                                         <Form.Control
+                                            className="input-box"
                                             required
                                             name="confirmPassword"
                                             type="password"
                                             placeholder="Re-enter password"
-                                            // value=""
                                             onChange={handleChange}
                                         />
                                     </Form.Group>
                             }
                             <Button
-                                className="mb-2"
+                                className="mb-2 purple-sign-btn"
                                 block
-                                variant="primary"
                                 type="submit"
                             >
                                 {isSignup ? 'Sign Up' : 'Sign In'}
@@ -155,7 +160,7 @@ const Auth = () => {
                                         //what button will look like
                                         render={(renderProps) => (
                                             <Button
-                                                className="mb-2"
+                                                className="mb-2 purple-sign-btn"
                                                 block
                                                 onClick={renderProps.onClick}
                                                 disabled={renderProps.disabled}
@@ -174,8 +179,8 @@ const Auth = () => {
                                 <Col xs={12} md={7}>
                                     {/* button to switch isSignup state */}
                                     <Button
-                                        block 
-                                        variant="light" 
+                                        className="green-sign-btn"
+                                        block
                                         onClick={switchMode}
                                     >
                                         {isSignup ? 'Already have an account? Sign In' : "Don't have an account? Sign Up"}

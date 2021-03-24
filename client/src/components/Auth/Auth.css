@@ -1,0 +1,41 @@
+.no-border {
+    border: none;
+}
+
+.green-sign-btn {
+    color: #6ADFDE;
+    border-color: #6ADFDE;
+    background-color: transparent;
+    border-radius: 20px;
+    /* width: 18em; */
+}
+
+.green-sign-btn:hover {
+    color: #fff;
+    border-color: #6ADFDE;
+    background-color: #6ADFDE;
+}
+
+.purple-sign-btn {
+    color: #7927C1;
+    border-color: #7927C1;
+    background-color: transparent;
+    border-radius: 20px;
+    /* width: 12em; */
+}
+
+.purple-sign-btn:hover {
+    color: #EBEBED;
+    border-color: #7927C1;
+    background-color: #7927C1;
+}
+
+.input-box {
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;
+}
+
+.input-box:hover {
+    padding-bottom: 1em;
+}
