@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from 'react-redux'; //useSelector - To retri
 import { createTrip, updateTrip } from '../../../actions/trips';
 import { getPlaces } from '../../../actions/places';
 
+import './TripForm.css';
+
 // pass in currentId, setCurrentId as props from state in parent App.js
 const TripForm = ({ currentId, setCurrentId }) =>  {
   //useState hook
@@ -81,13 +83,15 @@ const TripForm = ({ currentId, setCurrentId }) =>  {
   if(!user?.result?.name) {
     //return card which says cannot create trip
     return(
-      <Card className="mt-2">
+      <Card className="mt-2 no-border">
         <Card.Body>
-          <Card.Title>Please Sign In!</Card.Title>
+          <Card.Title>Please Sign In</Card.Title>
           <Card.Text>
             You must sign in to create a trip and like other users trips.
           </Card.Text>
-          <Card.Link as={Link} to='/auth'>Sign In</Card.Link>
+          <Button as={Link} to='/auth' className="signin-btn">
+            Sign In
+          </Button>
         </Card.Body>
       </Card>
     );

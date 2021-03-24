@@ -1,0 +1,31 @@
+.no-border {
+    border: none;
+}
+
+/* .signin-btn {
+    color: #6ADFDE;
+    border-color: #6ADFDE;
+    background-color: transparent;
+    border-radius: 20px;
+    width: 8em;
+}
+
+.signin-btn:hover {
+    color: #fff;
+    border-color: #6ADFDE;
+    background-color: #6ADFDE;
+} */
+
+.signin-btn {
+    color: #7927C1;
+    border-color: #7927C1;
+    background-color: transparent;
+    border-radius: 20px;
+    width: 8em;
+}
+
+.signin-btn:hover {
+    color: #EBEBED;
+    border-color: #7927C1;
+    background-color: #7927C1;
+}
