@@ -89,7 +89,7 @@ const TripForm = ({ currentId, setCurrentId }) =>  {
           <Card.Text>
             You must sign in to create a trip and like other users trips.
           </Card.Text>
-          <Button as={Link} to='/auth' className="signin-btn">
+          <Button as={Link} to='/auth' className="purple-btn">
             Sign In
           </Button>
         </Card.Body>
@@ -98,7 +98,7 @@ const TripForm = ({ currentId, setCurrentId }) =>  {
   }
 
   return (
-    <Card className="mt-2">
+    <Card className="mt-2 no-border">
       <Card.Body>
         <Card.Title>{currentId ? 'Edit' : 'Create'} a trip</Card.Title>
         {/* start of Form */}
@@ -108,6 +108,7 @@ const TripForm = ({ currentId, setCurrentId }) =>  {
           <Form.Group controlId="title">
             <Form.Label>Title</Form.Label>
             <Form.Control
+              className="input-box"
               required
               name="title"
               type="text"
@@ -122,7 +123,8 @@ const TripForm = ({ currentId, setCurrentId }) =>  {
           {/* start of startPlace */}
           <Form.Group controlId="startPlace">
             <Form.Label>Starting city</Form.Label>              
-              <Form.Control 
+              <Form.Control
+                className="input-box"
                 as="select"
                 defaultValue="Choose..."
                 type="text"
@@ -143,7 +145,8 @@ const TripForm = ({ currentId, setCurrentId }) =>  {
           {/* start of endPlace */}
           <Form.Group controlId="endPlace">
             <Form.Label>Final city</Form.Label>              
-              <Form.Control 
+              <Form.Control
+                className="input-box"
                 as="select"
                 defaultValue="Choose..."
                 type="text"
@@ -165,9 +168,10 @@ const TripForm = ({ currentId, setCurrentId }) =>  {
           <Form.Group controlId="description">
             <Form.Label>Description</Form.Label>
             <Form.Control
+              className="input-box"
               required
               as="textarea"
-              rows="10"
+              rows="3"
               name="description"
               type="description"
               placeholder="Enter description of trip"
@@ -179,6 +183,7 @@ const TripForm = ({ currentId, setCurrentId }) =>  {
           <Form.Group controlId="tags">
             <Form.Label>Tags</Form.Label>
             <Form.Control
+              className="input-box"
               required
               name="tags"
               type="tags"
@@ -190,7 +195,7 @@ const TripForm = ({ currentId, setCurrentId }) =>  {
               Hint: Adventure,Beach (comma between hashtags with no spaces)
             </Form.Text>
           </Form.Group>
-          <Form.Group controlId="selectedFile">
+          <Form.Group className="mb-4" controlId="selectedFile">
             <FileBase
               type="file"
               multiple={false}
@@ -198,10 +203,10 @@ const TripForm = ({ currentId, setCurrentId }) =>  {
               onDone={({base64}) => setTripData({ ... tripData, selectedFile: base64 })}
             />
           </Form.Group>
-          <Button variant="primary" type="submit">
+          <Button variant="primary" type="submit" className="purple-btn">
             Submit
           </Button>
-          <Button className="ml-2" variant="info" onClick={clear}>
+          <Button className="ml-2 green-btn" variant="info" onClick={clear}>
             Clear
           </Button>
         </Form>

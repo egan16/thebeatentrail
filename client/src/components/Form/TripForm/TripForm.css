@@ -2,7 +2,7 @@
     border: none;
 }
 
-/* .signin-btn {
+.green-btn {
     color: #6ADFDE;
     border-color: #6ADFDE;
     background-color: transparent;
@@ -10,13 +10,13 @@
     width: 8em;
 }
 
-.signin-btn:hover {
+.green-btn:hover {
     color: #fff;
     border-color: #6ADFDE;
     background-color: #6ADFDE;
-} */
+}
 
-.signin-btn {
+.purple-btn {
     color: #7927C1;
     border-color: #7927C1;
     background-color: transparent;
@@ -24,8 +24,18 @@
     width: 8em;
 }
 
-.signin-btn:hover {
+.purple-btn:hover {
     color: #EBEBED;
     border-color: #7927C1;
     background-color: #7927C1;
+}
+
+.input-box {
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;
+}
+
+.input-box:hover {
+    padding-bottom: 1em;
 }
