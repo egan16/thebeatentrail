@@ -44,13 +44,13 @@ const Trip = ({ trip, setCurrentId }) =>  {
           </Row>
         </Row>
         <Card.Text>{trip.description}</Card.Text>
-        <Card.Text className="ml-4 mt-4">{trip.startPlace}</Card.Text>
+        <Card.Text className="text-center mt-4">{trip.startPlace}</Card.Text>
         <Row>
           <Card.Title className="ml-5 icon-color"><i className="bi bi-arrow-down-circle"></i></Card.Title>
           <Card.Subtitle className="pt-2 ml-1 icon-color">3 stops</Card.Subtitle>
           <Card.Text className="ml-1">Ber, Ams, Dub</Card.Text>
         </Row>
-        <Card.Text className="ml-4 mb-5">{trip.endPlace}</Card.Text>
+        <Card.Text className="text-center mb-5">{trip.endPlace}</Card.Text>
         <Row className="mb-2">
           <Col>
             <Card.Subtitle className="mb-2 text-muted">{trip.name}</Card.Subtitle>
@@ -64,7 +64,7 @@ const Trip = ({ trip, setCurrentId }) =>  {
         </Row>
         <Row>
           <Col>
-            <Button variant="light" className="mr-2 border-color border-btn" disabled={!user?.result} onClick={() => dispatch(likeTrip(trip._id)) }>
+            <Button variant="light" className="mr-2 border-color border-btn icon-color" disabled={!user?.result} onClick={() => dispatch(likeTrip(trip._id)) }>
               <Likes />
             </Button>
           </Col>
