@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios'; //used to make api calls
 import { Form, Button, Card, Alert, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import FileBase from 'react-file-base64';
@@ -8,6 +9,9 @@ import { createTrip, updateTrip } from '../../../actions/trips';
 import { getPlaces } from '../../../actions/places';
 
 import './TripForm.css';
+
+//Recommender system api url
+const apiRS = "http://127.0.0.1:7000/apiRS";
 
 // pass in currentId, setCurrentId as props from state in parent App.js
 const TripForm = ({ currentId, setCurrentId }) =>  {
@@ -20,6 +24,9 @@ const TripForm = ({ currentId, setCurrentId }) =>  {
     startPlace: '',
     endPlace: ''
   });
+
+  //useState hook to set the data gotten from the RS api
+  const [rsData, setRsData] = useState({});
   
   // get the trip with the current id, if no current id have null
   const trip = useSelector((state) => currentId ? state.trips.find((t) => t._id == currentId) : null);
@@ -51,6 +58,31 @@ const TripForm = ({ currentId, setCurrentId }) =>  {
     //dispatch an action
     dispatchPlace(getPlaces());
   }, [dispatchPlace]);
+
+  //useEffect to get Recommendation
+  useEffect(() => {
+    getRecommendation();
+  }, []);
+
+  //function to run api axios call
+  const getRecommendation = async () => {
+    //COMMENTED OUT: TRYING TO FIX CORS ISSUE
+    // const options = {
+    //     method: 'GET',
+    //     mode: 'no-cors'
+    // };
+    // const headers = {
+    //   "Access-Control-Allow-Headers" : "Content-Type",
+    //   "Access-Control-Allow-Origin": "http://localhost:5000",
+    //   "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PUT,DELETE"
+    // };
+
+    const response = await axios.get(apiRS);
+    setRsData(response.data);
+    // const response = await fetch(apiRS);
+    // const jsonData = await response.json();
+    // setRsData(jsonData);
+  };
 
   // handleSubmit function handler
   const handleSubmit = (e) => {
@@ -137,7 +169,7 @@ const TripForm = ({ currentId, setCurrentId }) =>  {
                       <p>
                         Start your vacation in style, We think that you would love...
                       </p>
-                      <h1 className="text-center mb-3">Venice</h1>
+                      <p className="text-center mb-3">{rsData}</p>
                       <p>
                         Why not try it out?
                       </p>
