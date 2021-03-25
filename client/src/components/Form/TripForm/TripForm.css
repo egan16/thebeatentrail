@@ -30,6 +30,18 @@
     background-color: #7927C1;
 }
 
+.rs-btn {
+    background-color: #85FEDB;
+    border-color: #85FEDB;
+    border-radius: 20px;
+}
+
+.rs-btn:hover {
+    color: #fff;
+    border-color: #6ADFDE;
+    background-color: #6ADFDE;
+}
+
 .input-box {
     border-top-style: none;
     border-right-style: none;
@@ -38,4 +50,9 @@
 
 .input-box:hover {
     padding-bottom: 1em;
+}
+
+.alert-box {
+    background-color: #85FEDB;
+    color: #7927C1;
 }

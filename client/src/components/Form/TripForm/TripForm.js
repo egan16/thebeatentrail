@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Button, Card } from 'react-bootstrap';
+import { Form, Button, Card, Alert, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import FileBase from 'react-file-base64';
 import { useDispatch, useSelector } from 'react-redux'; //useSelector - To retrieve the data in components from global redux store
@@ -27,6 +27,9 @@ const TripForm = ({ currentId, setCurrentId }) =>  {
   const places = useSelector((state) => state.places);
 
   console.log(places);
+
+  //for recommend alert
+  const [show, setShow] = useState(false);
   
   //dispatch for trip
   const dispatch = useDispatch();
@@ -122,7 +125,35 @@ const TripForm = ({ currentId, setCurrentId }) =>  {
           </Form.Group>
           {/* start of startPlace */}
           <Form.Group controlId="startPlace">
-            <Form.Label>Starting city</Form.Label>              
+            <Row>
+              <Col>
+                <Form.Label>Starting city</Form.Label>
+              </Col>
+              <Row>
+                <Col>
+                  <>
+                    <Alert show={show} className="alert-box">
+                      <Alert.Heading>City Recommendation</Alert.Heading>
+                      <p>
+                        Start your vacation in style, We think that you would love...
+                      </p>
+                      <h1 className="text-center mb-3">Venice</h1>
+                      <p>
+                        Why not try it out?
+                      </p>
+                      <hr />
+                      <div className="d-flex justify-content-end">
+                        <Button className="purple-btn" onClick={() => setShow(false)}>
+                          Close
+                        </Button>
+                      </div>
+                    </Alert>
+
+                    {!show && <Button className="mr-2 rs-btn" onClick={() => setShow(true)}>Need a hint?</Button>}
+                  </>
+                </Col>
+              </Row>
+            </Row>            
               <Form.Control
                 className="input-box"
                 as="select"
