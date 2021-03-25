@@ -146,7 +146,7 @@ const Auth = () => {
                                     </Form.Group>
                             }
                             <Button
-                                className="mb-2 purple-sign-btn"
+                                className="mb-2 mt-4 purple-sign-btn"
                                 block
                                 type="submit"
                             >

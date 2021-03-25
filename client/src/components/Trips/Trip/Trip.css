@@ -1,0 +1,33 @@
+.icon-color {
+    color: #7927C1;
+}
+
+.green-font {
+    color: #85FEDB;
+}
+
+.border-color {
+    border-color: #7927C1;
+}
+
+.border-color:hover {
+    border-color: #7927C1;
+}
+
+.edit-btn {
+    color: #6ADFDE;
+    border-color: #6ADFDE;
+    background-color: transparent;
+    border-radius: 20px;
+    /* width: 18em; */
+}
+
+.edit-btn:hover {
+    color: #fff;
+    border-color: #6ADFDE;
+    background-color: #6ADFDE;
+}
+
+.border-btn {
+    border-radius: 20px;
+}
