@@ -143,7 +143,7 @@ const TripForm = ({ currentId, setCurrentId }) =>  {
           <Form.Group controlId="title">
             <Form.Label>Title</Form.Label>
             <Form.Control
-              className="input-box"
+              className="mt-1 input-box"
               required
               name="title"
               type="text"
@@ -181,13 +181,13 @@ const TripForm = ({ currentId, setCurrentId }) =>  {
                       </div>
                     </Alert>
 
-                    {!show && <Button className="mr-2 rs-btn" onClick={() => setShow(true)}>Need a hint?</Button>}
+                    {!show && <Button className="mr-2 mb-2 rs-btn" onClick={() => setShow(true)}>Need a hint?</Button>}
                   </>
                 </Col>
               </Row>
             </Row>            
               <Form.Control
-                className="input-box"
+                className="mt-2 input-box"
                 as="select"
                 defaultValue="Choose..."
                 type="text"
@@ -209,7 +209,7 @@ const TripForm = ({ currentId, setCurrentId }) =>  {
           <Form.Group controlId="endPlace">
             <Form.Label>Final city</Form.Label>              
               <Form.Control
-                className="input-box"
+                className="mt-1 input-box"
                 as="select"
                 defaultValue="Choose..."
                 type="text"
@@ -231,7 +231,7 @@ const TripForm = ({ currentId, setCurrentId }) =>  {
           <Form.Group controlId="description">
             <Form.Label>Description</Form.Label>
             <Form.Control
-              className="input-box"
+              className="mt-1 input-box"
               required
               as="textarea"
               rows="3"
@@ -246,7 +246,7 @@ const TripForm = ({ currentId, setCurrentId }) =>  {
           <Form.Group controlId="tags">
             <Form.Label>Tags</Form.Label>
             <Form.Control
-              className="input-box"
+              className="mt-1 input-box"
               required
               name="tags"
               type="tags"
@@ -258,7 +258,7 @@ const TripForm = ({ currentId, setCurrentId }) =>  {
               Hint: Adventure,Beach (comma between hashtags with no spaces)
             </Form.Text>
           </Form.Group>
-          <Form.Group className="mb-4" controlId="selectedFile">
+          <Form.Group className="mt-1 mb-4" controlId="selectedFile">
             <FileBase
               type="file"
               multiple={false}
@@ -266,10 +266,10 @@ const TripForm = ({ currentId, setCurrentId }) =>  {
               onDone={({base64}) => setTripData({ ... tripData, selectedFile: base64 })}
             />
           </Form.Group>
-          <Button variant="primary" type="submit" className="purple-btn">
+          <Button variant="primary" type="submit" className="mr-2 mt-2 purple-btn">
             Submit
           </Button>
-          <Button className="ml-2 green-btn" variant="info" onClick={clear}>
+          <Button className="mt-2 green-btn" variant="info" onClick={clear}>
             Clear
           </Button>
         </Form>

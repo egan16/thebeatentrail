@@ -32,6 +32,30 @@ const Trip = ({ trip, setCurrentId }) =>  {
   return (
     <Card style={{ width: '20rem' }} className="mb-4" >
       <Card.Img variant="top" src={trip.selectedFile} ></Card.Img>
+      <Card.ImgOverlay>
+        <Row>
+          <Col>
+            <Button variant="light" className="mr-2 border-color border-btn icon-color" disabled={!user?.result} onClick={() => dispatch(likeTrip(trip._id)) }>
+              <Likes />
+            </Button>
+          </Col>
+          <Row>
+            <Col>
+            {(user?.result?.googleId === trip?.user || user?.result?._id === trip?.user) && (
+              <Button className="mr-2 edit-btn" onClick={() => setCurrentId(trip._id)}>
+                <i className="bi bi-three-dots"></i>
+              </Button>
+            )}
+            {/* if user of trip is logged in show delete button for that trip */}
+            {(user?.result?.googleId === trip?.user || user?.result?._id === trip?.user) && (
+              <Button variant="outline-danger" className="mr-2 border-btn" onClick={() => dispatch(deleteTrip(trip._id)) }>
+                <i className="bi bi-trash"></i>
+              </Button>
+            )}
+            </Col>
+          </Row>
+        </Row>
+      </Card.ImgOverlay>
       <Card.Body>
         <Row className="mb-2">
           <Col>
@@ -53,34 +77,12 @@ const Trip = ({ trip, setCurrentId }) =>  {
         <Card.Text className="text-center mb-5">{trip.endPlace}</Card.Text>
         <Row className="mb-2">
           <Col>
-            <Card.Subtitle className="mb-2 text-muted">{trip.name}</Card.Subtitle>
+            <Card.Subtitle className="text-muted">{trip.name}</Card.Subtitle>
           </Col>
           <Row>
             <Col>
               {/* using the moment library - fromNow() uses the date and says how long since the date, eg, 1 week ago */}
-              <Card.Subtitle className="mb-2 mr-2 text-muted">{moment(trip.createdAt).fromNow()}</Card.Subtitle>
-            </Col>
-          </Row>
-        </Row>
-        <Row>
-          <Col>
-            <Button variant="light" className="mr-2 border-color border-btn icon-color" disabled={!user?.result} onClick={() => dispatch(likeTrip(trip._id)) }>
-              <Likes />
-            </Button>
-          </Col>
-          <Row>
-            <Col>
-            {(user?.result?.googleId === trip?.user || user?.result?._id === trip?.user) && (
-              <Button className="mr-2 edit-btn" onClick={() => setCurrentId(trip._id)}>
-                <i className="bi bi-three-dots"></i>
-              </Button>
-            )}
-            {/* if user of trip is logged in show delete button for that trip */}
-            {(user?.result?.googleId === trip?.user || user?.result?._id === trip?.user) && (
-              <Button variant="outline-danger" className="mr-2 border-btn" onClick={() => dispatch(deleteTrip(trip._id)) }>
-                <i className="bi bi-trash"></i>
-              </Button>
-            )}
+              <Card.Subtitle className="mr-2 text-muted">{moment(trip.createdAt).fromNow()}</Card.Subtitle>
             </Col>
           </Row>
         </Row>
