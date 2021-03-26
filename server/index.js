@@ -1,3 +1,5 @@
+// require('dotenv').config()
+import dotenv from 'dotenv';// to use .env file for database variables
 import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
@@ -11,6 +13,9 @@ import tripRoutes from './routes/trips.js';
 import userRoutes from './routes/user.js';
 //import for place routes
 import placeRoutes from './routes/places.js';
+
+//to use .env file
+dotenv.config();
 
 //initialise this application
 const app = express();
@@ -75,9 +80,9 @@ PythonShell.runString('x=1+1;print(x)', null, function (err, result) {
 // } 
 
 //MongoDB Atlas connection
-const CONNECTION_URL = 'mongodb+srv://mikeTBT:secret123@cluster0.9hada.mongodb.net/thebeatentrail?retryWrites=true&w=majority';
+const CONNECTION_URL = process.env.DB_HOST;
 // PORT for running application
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 
 //To connect DB to application
 mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
