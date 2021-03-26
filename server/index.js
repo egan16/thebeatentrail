@@ -82,7 +82,7 @@ PythonShell.runString('x=1+1;print(x)', null, function (err, result) {
 //MongoDB Atlas connection
 const CONNECTION_URL = process.env.DB_HOST;
 // PORT for running application
-// const PORT = process.env.PORT;
+const PORT = process.env.PORT;
 
 //To connect DB to application
 mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
